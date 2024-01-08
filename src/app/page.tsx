@@ -43,7 +43,7 @@ export default function Home() {
       </p>
       <H3>Content:</H3>
       <p>{`By pressing the "Consent & Continue" button, you declare that you have read and understood the information above. You confirm that you will be concentrating on the task and complete it to the best of your abilities.`}</p>
-      <MyLink href="/step-6">
+      <MyLink href="/step-1">
         Consent & Continue
       </MyLink>
     </Main>
