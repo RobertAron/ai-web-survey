@@ -1,3 +1,4 @@
+import { Main, MyLink, PageTitle } from "@/CommonComponents";
 import { OnAScale } from "@/OnAScale";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -5,11 +6,11 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <main className="flex flex-col gap-2 p-2">
-      <h2 className="text-2xl font-bold">Rate Your Knowledge</h2>
-      <p className="text-gray-500 dark:text-gray-400">
-        Please rate your knowledge on the following topics.
-      </p>
+    <Main>
+      <PageTitle
+        title="Rate Your Knowledge"
+        subtitle="Please rate your knowledge on the following topics."
+      />
       <form className="flex flex-col gap-4">
         <OnAScale
           responses={[
@@ -30,7 +31,7 @@ export default function Page() {
             "Strongly Agree",
           ]}
           statements={[
-            "I believe all states in the United States should offfer covenant marriages.",
+            "I believe all states in the United States should offer covenant marriages.",
           ]}
         />
         <OnAScale
@@ -43,9 +44,9 @@ export default function Page() {
           statements={["The AI was helpful in assisting with Task 1."]}
         />
       </form>
-      <Link href="/step-7" className={cn(buttonVariants(), "w-full mx-auto")}>
+      <MyLink href="/step-7">
         Next
-      </Link>
-    </main>
+      </MyLink>
+    </Main>
   );
 }

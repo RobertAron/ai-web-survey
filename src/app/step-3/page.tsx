@@ -2,15 +2,16 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { OnAScale } from "@/OnAScale";
+import { Main, MyLink, PageTitle } from "@/CommonComponents";
 
 export default function Component() {
   return (
-    <main className="flex flex-col gap-2 p-2">
-      <h2 className="text-2xl font-bold">Rate Your Knowledge</h2>
-      <p className="text-gray-500 dark:text-gray-400">
-        Please rate your knowledge on the following topics.
-      </p>
-      <form>
+    <Main>
+      <PageTitle
+        title="Rate how much you agree"
+        subtitle="Please rate how much you agree with the following statements"
+      />
+      <form className="space-y-4">
         <OnAScale
           responses={[
             "Strongly Disagree",
@@ -32,10 +33,10 @@ export default function Component() {
             "I believe vacuum coffee makers is the best way to make an espresso.",
           ]}
         />
-        <Link href="/step-4" className={cn(buttonVariants(), "w-full m-auto")}>
+        <MyLink href="/step-4">
           Next
-        </Link>
+        </MyLink>
       </form>
-    </main>
+    </Main>
   );
 }

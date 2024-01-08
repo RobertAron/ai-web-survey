@@ -1,14 +1,13 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Main, PageTitle } from "@/CommonComponents";
 
 export default function Component() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <header className="w-full bg-white dark:bg-gray-800 shadow py-6 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-center dark:text-gray-100">
-          Mayor Simulation - Budget Allocation
-        </h1>
-      </header>
+    <Main>
+      <PageTitle
+        title="Mayor Simulation - Budget Allocation"
+      />
       <section className="w-full max-w-2xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
         <div className="bg-white dark:bg-gray-800 shadow sm:rounded-lg p-6">
           <p className="text-gray-600 dark:text-gray-400">
@@ -111,6 +110,6 @@ export default function Component() {
         </div>
       </section>
       <section className="w-full max-w-2xl mx-auto mt-8 px-4 sm:px-6 lg:px-8"></section>
-    </main>
+    </Main>
   );
 }

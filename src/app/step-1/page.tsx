@@ -13,6 +13,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Main, MyLink, PageTitle } from "@/CommonComponents";
 // import { useForm } from "react-hook-form";
 // import { zodResolver } from "@hookform/resolvers/zod";
 // import { z } from "zod";
@@ -30,14 +31,12 @@ export default function DemographicSurvey() {
   //   resolver: zodResolver(demographicFormTemplate),
   // });
   return (
-    <div className="mx-auto max-w-md space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Demographic Form</h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          Please fill in the form below with your information. All fields are
-          required.
-        </p>
-      </div>
+    <Main>
+      <PageTitle
+        title="Demographic Form"
+        subtitle="Please fill in the form below with your information. All fields are
+        required."
+      />
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="age">Age</Label>
@@ -103,10 +102,10 @@ export default function DemographicSurvey() {
             required
           />
         </div>
-        <Link href="/step-2" className={cn(buttonVariants(), "w-full m-auto")}>
+        <MyLink href="/step-2">
           Next
-        </Link>
+        </MyLink>
       </div>
-    </div>
+    </Main>
   );
 }
