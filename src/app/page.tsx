@@ -1,7 +1,4 @@
 import { Main, MyLink, PageTitle } from "@/CommonComponents";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 import React from "react";
 
 function H3({ children }: { children: React.ReactNode }) {
@@ -43,9 +40,7 @@ export default function Home() {
       </p>
       <H3>Content:</H3>
       <p>{`By pressing the "Consent & Continue" button, you declare that you have read and understood the information above. You confirm that you will be concentrating on the task and complete it to the best of your abilities.`}</p>
-      <MyLink href="/step-1">
-        Consent & Continue
-      </MyLink>
+      <MyLink href="/step-1">Consent & Continue</MyLink>
     </Main>
   );
 }
