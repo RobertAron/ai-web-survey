@@ -6,7 +6,7 @@ import { UrlObject } from "url";
 
 export function Main({ children }: { children: React.ReactNode }) {
   return (
-    <main className="mx-auto max-w-xl flex flex-col gap-4 py-16">
+    <main className="mx-auto max-w-xl flex flex-col gap-4 py-16 flex-grow">
       {children}
     </main>
   );
