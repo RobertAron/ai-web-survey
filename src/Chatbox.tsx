@@ -4,13 +4,14 @@ import { Avatar } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { AlertTriangle, Bot, User } from "lucide-react";
 import { match } from "ts-pattern";
-import { useChat } from "ai/react";
+import { UseChatHelpers, useChat } from "ai/react";
 
-export function Chatbox() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: "/api/learning",
-  });
-
+export function Chatbox({
+  useChatHelpers,
+}: {
+  useChatHelpers: UseChatHelpers;
+}) {
+  const { messages, input, handleInputChange, handleSubmit } = useChatHelpers;
   return (
     <div className="border border-black h-0 grow flex flex-col bg-slate-100">
       <section

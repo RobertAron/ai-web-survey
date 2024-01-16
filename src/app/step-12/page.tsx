@@ -1,17 +1,20 @@
-import { Main, MyLink, PageTitle } from "@/CommonComponents";
+import { Main, PageTitle } from "@/CommonComponents";
+import { redirectCheck } from "@/redirectCheck";
 import React from "react";
 
 function H3({ children }: { children: React.ReactNode }) {
   return <h3 className="text-lg font-bold">{children}</h3>;
 }
 
-export default function Home() {
+export default async function Home() {
+  await redirectCheck();
   return (
     <Main>
       <PageTitle
         title="De-brief"
         subtitle="Debriefing Form for Participation in a Research Study University of Washington"
       />
+      <H3>Thank you for your participation!</H3>
       <hr />
       <p>
         Thank you for your participation in our study! Your participation is

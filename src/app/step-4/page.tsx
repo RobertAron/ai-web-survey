@@ -1,9 +1,9 @@
-import { Main, MyLink, PageTitle } from "@/CommonComponents";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Main, PageTitle } from "@/CommonComponents";
+import { redirectCheck } from "@/redirectCheck";
+import { Form } from "./Form";
 
-export default function Component() {
+export default async function Component() {
+  await redirectCheck();
   return (
     <Main>
       <PageTitle
@@ -30,9 +30,7 @@ export default function Component() {
       <div className="relative w-full aspect-w-16 aspect-h-9 py-4">
         <video controls className="w-full bg-black" />
       </div>
-      <MyLink href="/step-5">
-        Next
-      </MyLink>
+      <Form />
     </Main>
   );
 }

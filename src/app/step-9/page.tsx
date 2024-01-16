@@ -1,27 +1,16 @@
-import { OnAScale } from "@/OnAScale";
-import { Main, MyLink, PageTitle } from "@/CommonComponents";
+import { Main, PageTitle } from "@/CommonComponents";
+import { Form } from "./Form";
+import { redirectCheck } from "@/redirectCheck";
 
-export default function Component() {
+export default async function Component() {
+  await redirectCheck();
   return (
     <Main>
       <PageTitle
         title="Rate the AI"
         subtitle="Rate how the AI did in the previous questions"
       />
-      <form className="space-y-4">
-        <OnAScale
-          responses={[
-            "Not helpful",
-            "Slightly helpful",
-            "Helpful",
-            "Extremely helpful",
-          ]}
-          statements={[
-            "How helpful was the AI model in assisting with Task 2?",
-          ]}
-        />
-        <MyLink href="/step-10">Next</MyLink>
-      </form>
+      <Form />
     </Main>
   );
 }

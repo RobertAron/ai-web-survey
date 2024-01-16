@@ -1,11 +1,14 @@
-import { Main, MyLink, PageTitle } from "@/CommonComponents";
+import { Main, PageTitle } from "@/CommonComponents";
 import React from "react";
+import { Form } from "./Form";
+import { redirectCheck } from "@/redirectCheck";
 
 function H3({ children }: { children: React.ReactNode }) {
   return <h3 className="text-lg font-bold">{children}</h3>;
 }
 
-export default function Home() {
+export default async function Home() {
+  await redirectCheck();
   return (
     <Main>
       <PageTitle title="Consent Form" subtitle="Information about the study:" />
@@ -40,7 +43,7 @@ export default function Home() {
       </p>
       <H3>Content:</H3>
       <p>{`By pressing the "Consent & Continue" button, you declare that you have read and understood the information above. You confirm that you will be concentrating on the task and complete it to the best of your abilities.`}</p>
-      <MyLink href="/step-1">Consent & Continue</MyLink>
+      <Form />
     </Main>
   );
 }

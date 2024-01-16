@@ -1,15 +1,16 @@
-import { Chatbox } from "@/Chatbox";
-import { Main, MyLink, PageTitle } from "@/CommonComponents";
+import { Main, PageTitle } from "@/CommonComponents";
+import { Form } from "./Form";
+import { redirectCheck } from "@/redirectCheck";
 
-export default function Component() {
+export default async function Component() {
+  await redirectCheck();
   return (
     <Main>
       <PageTitle
         title="Engage & Learn: Interactive Chatbot"
         subtitle="Learn about a topic from the chatbot."
       />
-      <Chatbox />
-      <MyLink href="/step-6">Next</MyLink>
+      <Form />
     </Main>
   );
 }

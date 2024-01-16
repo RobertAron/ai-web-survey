@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import { cn } from "./lib/utils";
 import { buttonVariants } from "./components/ui/button";
 import Link from "next/link";
@@ -41,5 +41,18 @@ export function MyLink<RouteInferType>({
     >
       {children}
     </Link>
+  );
+}
+
+export function FormSubmit(props: ComponentProps<"button">) {
+  return (
+    <button
+      {...props}
+      className={cn(
+        buttonVariants(),
+        "w-full mx-auto font-bold capitalize",
+        props.className
+      )}
+    />
   );
 }
