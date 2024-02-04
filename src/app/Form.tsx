@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { useAsyncAction } from "@/useAsyncAction";
 
 const schema = z.object({
   surveyId: z.string().min(1, { message: "Required" }),
@@ -29,14 +30,19 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
-    <form className="flex flex-col gap-2" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-2" onSubmit={execute}>
       <Input
         placeholder="Survey ID"
         {...register("surveyId")}
         error={errors.surveyId?.message}
       />
-      <FormSubmit type="submit">Consent & Continue</FormSubmit>
+      <FormSubmit type="submit" isLoading={isLoading}>
+        Consent & Continue
+      </FormSubmit>
     </form>
   );
 }

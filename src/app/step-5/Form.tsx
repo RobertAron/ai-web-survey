@@ -1,6 +1,7 @@
 "use client";
 import { Chatbox } from "@/Chatbox";
 import { FormSubmit } from "@/CommonComponents";
+import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useChat } from "ai/react";
 import { useRouter } from "next/navigation";
@@ -25,11 +26,16 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
     <>
       <Chatbox useChatHelpers={useChatHelpers} />
-      <form onSubmit={onSubmit}>
-        <FormSubmit type="submit">Next</FormSubmit>
+      <form onSubmit={execute}>
+        <FormSubmit isLoading={isLoading} type="submit">
+          Next
+        </FormSubmit>
       </form>
     </>
   );

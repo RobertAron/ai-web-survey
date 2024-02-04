@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useAsyncAction } from "@/useAsyncAction";
 
 const UserSchema = z.object({
   ageResponse: z.union([
@@ -62,13 +63,16 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   const {
     onChange: genderChange,
     ref: genderRef,
     ...restGenderRegister
   } = register("gender");
   return (
-    <form className="space-y-4" onSubmit={onSubmit}>
+    <form className="space-y-4" onSubmit={execute}>
       <div className="space-y-2">
         <Label htmlFor="age">Age</Label>
         <Input
@@ -154,7 +158,9 @@ export function Form() {
           {...register("religion")}
         />
       </div>
-      <FormSubmit type="submit">Next</FormSubmit>
+      <FormSubmit type="submit" isLoading={isLoading}>
+        Next
+      </FormSubmit>
     </form>
   );
 }

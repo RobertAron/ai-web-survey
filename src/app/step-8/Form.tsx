@@ -3,6 +3,7 @@ import { Chatbox } from "@/Chatbox";
 import { FormSubmit } from "@/CommonComponents";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useChat } from "ai/react";
 import { useRouter } from "next/navigation";
@@ -49,10 +50,13 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
     <>
       <Chatbox useChatHelpers={useChatHelpers} />
-      <form className="flex flex-col gap-2" onSubmit={onSubmit}>
+      <form className="flex flex-col gap-2" onSubmit={execute}>
         <div className="grid grid-cols-2 gap-4 text-sm font-medium text-gray-700">
           <label className="flex flex-col gap-1">
             <span>Education</span>
@@ -116,7 +120,9 @@ export function Form() {
             {remaining} Remaining
           </div>
         </div>
-        <FormSubmit type="submit">Next</FormSubmit>
+        <FormSubmit type="submit" isLoading={isLoading}>
+          Next
+        </FormSubmit>
       </form>
     </>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { FormSubmit } from "@/CommonComponents";
 import { OnAScale } from "@/OnAScale";
+import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -25,8 +26,11 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
-    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={execute}>
       <OnAScale
         register={register}
         sectionKey="agree"
@@ -82,7 +86,9 @@ export function Form() {
           },
         ]}
       />
-      <FormSubmit type="submit">Next</FormSubmit>
+      <FormSubmit type="submit" isLoading={isLoading}>
+        Next
+      </FormSubmit>
     </form>
   );
 }

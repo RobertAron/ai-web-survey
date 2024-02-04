@@ -45,7 +45,7 @@ export default async function Home() {
         justo. Aliquam porttitor arcu congue, porta dui vel, scelerisque augue.
         Nullam condimentum pulvinar accumsan. Aenean dictum quam id dui tempor
         facilisis. Ut auctor ligula felis. Proin mollis interdum diam, viverra
-        dictum quam commodo ac.{" "}
+        dictum quam commodo ac.
       </p>
     </Main>
   );

@@ -3,6 +3,7 @@ import { cn } from "./lib/utils";
 import { buttonVariants } from "./components/ui/button";
 import Link from "next/link";
 import { UrlObject } from "url";
+import { Spinner } from "./components/ui/Spinner";
 
 export function Main({ children }: { children: React.ReactNode }) {
   return (
@@ -44,15 +45,22 @@ export function MyLink<RouteInferType>({
   );
 }
 
-export function FormSubmit(props: ComponentProps<"button">) {
+export function FormSubmit({
+  className,
+  isLoading,
+  children,
+  ...restProps
+}: ComponentProps<"button"> & { isLoading?: boolean }) {
   return (
     <button
-      {...props}
+      {...restProps}
       className={cn(
         buttonVariants(),
         "w-full mx-auto font-bold capitalize",
-        props.className
+        className
       )}
-    />
+    >
+      {isLoading ? <Spinner /> : children}
+    </button>
   );
 }

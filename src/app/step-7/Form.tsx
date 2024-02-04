@@ -7,6 +7,7 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { FormSubmit } from "@/CommonComponents";
 import { cn } from "@/lib/utils";
+import { useAsyncAction } from "@/useAsyncAction";
 const formTemplate = z.object({
   education: z.number(),
   health: z.number(),
@@ -38,10 +39,13 @@ export function Form() {
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
     <form
       className="grid grid-cols-2 gap-4 text-sm font-medium text-gray-700"
-      onSubmit={onSubmit}
+      onSubmit={execute}
     >
       <label className="flex flex-col gap-1">
         <span>Education</span>
@@ -104,7 +108,7 @@ export function Form() {
       >
         {remaining} Remaining
       </div>
-      <FormSubmit type="submit" className="col-span-2">
+      <FormSubmit type="submit" className="col-span-2" isLoading={isLoading}>
         Next
       </FormSubmit>
     </form>

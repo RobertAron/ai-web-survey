@@ -2,6 +2,8 @@ import { prismaClient } from "@/database";
 import { Console } from "node:console";
 import { Transform } from "node:stream";
 
+export const dynamic = 'force-dynamic'
+
 const ts = new Transform({
   transform(chunk, enc, cb) {
     cb(null, chunk);

@@ -1,6 +1,7 @@
 "use client";
 import { FormSubmit, MyLink } from "@/CommonComponents";
 import { OnAScale } from "@/OnAScale";
+import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -14,14 +15,18 @@ export function Form() {
   const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
+
   const router = useRouter();
   const onSubmit = handleSubmit((d) => {
     fetch("/step-2/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   });
+  const { execute, isLoading } = useAsyncAction(onSubmit, {
+    keepLoadingOnSuccess: true,
+  });
   return (
-    <form className="space-y-4" onSubmit={onSubmit}>
+    <form className="space-y-4" onSubmit={execute}>
       <OnAScale
         register={register}
         sectionKey="knowledgeRating"
@@ -45,7 +50,9 @@ export function Form() {
           ] as const
         }
       />
-      <FormSubmit type="submit">Next</FormSubmit>
+      <FormSubmit type="submit" isLoading={isLoading}>
+        Next
+      </FormSubmit>
     </form>
   );
 }
