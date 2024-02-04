@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
-type UseAsyncActionConfig<T> = {
-  onSuccess?: (data: T) => void;
+type UseAsyncActionConfig<T extends (...args: any[]) => MaybePromise<any>> = {
+  onSuccess?: (data: Awaited<ReturnType<T>>) => void;
   onError?: (error: any) => void;
   keepLoadingOnSuccess?: boolean;
 };

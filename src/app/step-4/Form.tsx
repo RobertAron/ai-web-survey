@@ -14,16 +14,15 @@ export function Form() {
     resolver: zodResolver(formTemplate),
   });
   const router = useRouter();
-  const onSubmit = handleSubmit((d) => {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
     fetch("/step-4/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
-  });
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
   return (
-    <form className="space-y-4" onSubmit={execute}>
+    <form className="space-y-4" onSubmit={handleSubmit(execute)}>
       <FormSubmit type="submit" isLoading={isLoading}>
         Next
       </FormSubmit>

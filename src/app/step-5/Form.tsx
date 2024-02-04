@@ -18,21 +18,20 @@ export function Form() {
     resolver: zodResolver(formTemplate),
   });
   const router = useRouter();
-  const onSubmit = handleSubmit((d) => {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
     fetch("/step-5/api", {
       method: "POST",
       body: JSON.stringify({ messages: useChatHelpers.messages }),
     })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
-  });
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
   return (
     <>
       <Chatbox useChatHelpers={useChatHelpers} />
-      <form onSubmit={execute}>
+      <form onSubmit={handleSubmit(execute)}>
         <FormSubmit isLoading={isLoading} type="submit">
           Next
         </FormSubmit>

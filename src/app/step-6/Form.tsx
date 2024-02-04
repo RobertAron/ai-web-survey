@@ -18,19 +18,18 @@ export function Form() {
   const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
-  const onSubmit = handleSubmit((d) => {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
     fetch("/step-6/api", {
       method: "POST",
       body: JSON.stringify(d),
     })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
-  });
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
   return (
-    <form className="flex flex-col gap-4" onSubmit={execute}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(execute)}>
       <OnAScale
         register={register}
         sectionKey="knowledge"
@@ -77,7 +76,9 @@ export function Form() {
           },
         ]}
       />
-      <FormSubmit type="submit" isLoading={isLoading}>Next</FormSubmit>
+      <FormSubmit type="submit" isLoading={isLoading}>
+        Next
+      </FormSubmit>
     </form>
   );
 }

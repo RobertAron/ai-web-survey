@@ -52,8 +52,11 @@ export function Form() {
   });
   const router = useRouter();
 
-  const onSubmit = handleSubmit(async ({ ageResponse, ...restResponse }) => {
-    await fetch("/step-1/api", {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async ({
+    ageResponse,
+    ...restResponse
+  }) =>
+    fetch("/step-1/api", {
       method: "POST",
       body: JSON.stringify({
         ...restResponse,
@@ -62,7 +65,7 @@ export function Form() {
     })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
-  });
+
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
@@ -72,7 +75,7 @@ export function Form() {
     ...restGenderRegister
   } = register("gender");
   return (
-    <form className="space-y-4" onSubmit={execute}>
+    <form className="space-y-4" onSubmit={handleSubmit(execute)}>
       <div className="space-y-2">
         <Label htmlFor="age">Age</Label>
         <Input

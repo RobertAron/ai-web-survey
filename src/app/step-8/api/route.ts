@@ -4,19 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const formTemplate = z.object({
-  messages: z
-    .object({
-      role: z.enum(["system", "user", "assistant"]),
-      content: z.string(),
-    })
-    .array(),
-  percentages: z.object({
-    education: z.number(),
-    health: z.number(),
-    infrastructure: z.number(),
-    publicSafety: z.number(),
-    environment: z.number(),
-  }),
+  agreeRating: z.record(z.string()),
 });
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -25,17 +13,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const nextPage = "/step-9";
   const userId = cookies().get("user-id");
   await prismaClient.$transaction([
-    prismaClient.conversation.create({
-      data: {
-        conversation: parsedData.messages,
-        conversation_id: "step-8",
-        user_id: userId?.value ?? "",
-      },
-    }),
     prismaClient.form_response.createMany({
-      data: Object.entries(parsedData.percentages).map(([key, value]) => ({
+      data: Object.entries(parsedData.agreeRating).map(([key, value]) => ({
         user_id: userId?.value ?? "",
-        question_id: `step-8-${key}`,
+        question_id: `step-9-${key}`,
         response: `${value}`,
       })),
     }),
