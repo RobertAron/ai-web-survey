@@ -10,12 +10,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
   const nextPage = "/step-1";
-  await prismaClient.user_page_tracking.create({
-    data: {
-      current_page: nextPage,
-      user_id: parsedData.userId,
-    },
-  });
+  try {
+    await prismaClient.user_page_tracking.create({
+      data: {
+        current_page: nextPage,
+        user_id: parsedData.userId,
+      },
+    });
+  } catch (err) {}
   cookies().set("user-id", parsedData.userId, { secure: true });
   return Response.json({ nextPage });
 }

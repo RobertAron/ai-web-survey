@@ -16,7 +16,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     prismaClient.form_response.createMany({
       data: Object.entries(parsedData.agreeRating).map(([key, value]) => ({
         user_id: userId?.value ?? "",
-        question_id: `step-9-${key}`,
+        question_id: `step-8-${key}`,
         response: `${value}`,
       })),
     }),

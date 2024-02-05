@@ -12,13 +12,17 @@ const formTemplate = z.object({
 });
 
 export function Form() {
-  const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
+  const { register, handleSubmit, formState } = useForm<
+    z.infer<typeof formTemplate>
+  >({
     resolver: zodResolver(formTemplate),
   });
+  console.log(formState.errors);
 
   const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = (d) => {
-    fetch("/step-2/api", { method: "POST", body: JSON.stringify(d) })
+    console.log("wah?");
+    return fetch("/step-2/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   };
@@ -39,15 +43,15 @@ export function Form() {
         ]}
         statements={
           [
-            { id: "step-2-1", label: "Covenant Marriages" },
-            { id: "step-2-2", label: "Astrology" },
-            { id: "step-2-3", label: "Sou Vie" },
-            { id: "step-2-4", label: "Net Neutraility" },
-            { id: "step-2-5", label: "Gambling" },
-            { id: "step-2-6", label: "Alients" },
-            { id: "step-2-7", label: "School Vouchers" },
-            { id: "step-2-8", label: "Coral Reefs" },
-            { id: "step-2-9", label: "Vacuum Coffee Making" },
+            { id: "q-1", label: "Covenant Marriages" },
+            { id: "q-2", label: "Astrology" },
+            { id: "q-3", label: "Sou Vie" },
+            { id: "q-4", label: "Net Neutraility" },
+            { id: "q-5", label: "Gambling" },
+            { id: "q-6", label: "Alients" },
+            { id: "q-7", label: "School Vouchers" },
+            { id: "q-8", label: "Coral Reefs" },
+            { id: "q-9", label: "Vacuum Coffee Making" },
           ] as const
         }
       />

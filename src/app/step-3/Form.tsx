@@ -38,33 +38,33 @@ export function Form() {
         ]}
         statements={[
           {
-            id: "step-3-1",
+            id: "q-1",
             label:
               "I believe all states in the United States should offfer covenant marriages.",
           },
-          { id: "step-3-2", label: "I believe in astrology." },
+          { id: "q-2", label: "I believe in astrology." },
           {
-            id: "step-3-3",
+            id: "q-3",
             label: "I believe that sou vie is the best way to cook a steak.",
           },
           {
-            id: "step-3-4",
+            id: "q-4",
             label: "I believe that net neutrality is a good thing for society.",
           },
-          { id: "step-3-5", label: "I believe gambling should be legal." },
-          { id: "step-3-6", label: "I believe aliens, in some form, exist." },
+          { id: "q-5", label: "I believe gambling should be legal." },
+          { id: "q-6", label: "I believe aliens, in some form, exist." },
           {
-            id: "step-3-7",
+            id: "q-7",
             label:
               "I believe school vouchers are a right of country's citizens.",
           },
           {
-            id: "step-3-8",
+            id: "q-8",
             label:
               "I believe the coral reefs will be gone in the next 100 years.",
           },
           {
-            id: "step-3-9",
+            id: "q-9",
             label:
               "I believe vacuum coffee makers is the best way to make an espresso.",
           },

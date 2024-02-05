@@ -19,7 +19,7 @@ export function Form() {
     resolver: zodResolver(formTemplate),
   });
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
-    fetch("/step-10/api", {
+    fetch("/step-9/api", {
       method: "POST",
       body: JSON.stringify(d),
     })
@@ -41,12 +41,12 @@ export function Form() {
         ]}
         statements={[
           {
-            id: "step-10-1-1",
+            id: "group-1-1",
             label:
               "Overall, do you feel like the AI models could aid humans in researching opinions?",
           },
           {
-            id: "step-10-1-2",
+            id: "group-1-2",
             label: "Do you feel like the model was bias in any way?",
           },
         ]}
@@ -57,12 +57,12 @@ export function Form() {
         responses={["None", "Less than half", "More than half", "Most of them"]}
         statements={[
           {
-            id: "step-10-2-1",
+            id: "group-2-1",
             label:
               "Was there any comments the AI model made that you did not agree with?",
           },
           {
-            id: "step-10-2-2",
+            id: "group-2-2",
             label:
               "Was there any information the AI model presented that you thought was incorrect?",
           },
@@ -79,7 +79,7 @@ export function Form() {
         ]}
         statements={[
           {
-            id: "step-10-3-1",
+            id: "group-3-1",
             label:
               "Compared to the general public, how knowledgeable are you with AI models?",
           },

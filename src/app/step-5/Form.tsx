@@ -1,5 +1,6 @@
 "use client";
 import { Chatbox } from "@/Chatbox";
+import { ChatboxDefaultInput } from "@/ChatboxDefaultInput";
 import { FormSubmit } from "@/CommonComponents";
 import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,7 +31,9 @@ export function Form() {
   });
   return (
     <>
-      <Chatbox useChatHelpers={useChatHelpers} />
+      <Chatbox useChatHelpers={useChatHelpers}>
+        <ChatboxDefaultInput useChatHelpers={useChatHelpers} />
+      </Chatbox>
       <form onSubmit={handleSubmit(execute)}>
         <FormSubmit isLoading={isLoading} type="submit">
           Next

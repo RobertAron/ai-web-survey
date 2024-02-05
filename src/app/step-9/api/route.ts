@@ -19,17 +19,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       data: [
         ...Object.entries(parsedData.knowledge).map(([key, value]) => ({
           user_id: userId?.value ?? "",
-          question_id: `step-6-knowledge-${key}`,
+          question_id: `step-9-knowledge-${key}`,
           response: `${value}`,
         })),
         ...Object.entries(parsedData.agree).map(([key, value]) => ({
           user_id: userId?.value ?? "",
-          question_id: `step-6-agree-${key}`,
+          question_id: `step-9-agree-${key}`,
           response: `${value}`,
         })),
         ...Object.entries(parsedData.helpful).map(([key, value]) => ({
           user_id: userId?.value ?? "",
-          question_id: `step-6-helpful-${key}`,
+          question_id: `step-9-helpful-${key}`,
           response: `${value}`,
         })),
       ],

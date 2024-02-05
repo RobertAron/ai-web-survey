@@ -18,7 +18,7 @@ export function Form() {
   });
   const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
-    fetch("/step-9/api", { method: "POST", body: JSON.stringify(d) })
+    fetch("/step-8/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   const { execute, isLoading } = useAsyncAction(onSubmit, {
@@ -37,7 +37,7 @@ export function Form() {
         ]}
         statements={[
           {
-            id: "step-9-1",
+            id: "group-1-1",
             label: "How helpful was the AI model in assisting with Task 2?",
           },
         ]}

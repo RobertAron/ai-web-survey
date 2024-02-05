@@ -57,7 +57,8 @@ export function FormSubmit({
       className={cn(
         buttonVariants(),
         "w-full mx-auto font-bold capitalize",
-        className
+        className,
+        { "bg-slate-600": restProps.disabled }
       )}
     >
       {isLoading ? <Spinner /> : children}

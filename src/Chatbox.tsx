@@ -5,11 +5,14 @@ import { Input } from "@/components/ui/input";
 import { AlertTriangle, Bot, User } from "lucide-react";
 import { match } from "ts-pattern";
 import { UseChatHelpers, useChat } from "ai/react";
+import React from "react";
 
 export function Chatbox({
   useChatHelpers,
+  children,
 }: {
   useChatHelpers: UseChatHelpers;
+  children?: React.ReactNode;
 }) {
   const { messages, input, handleInputChange, handleSubmit } = useChatHelpers;
   return (
@@ -52,7 +55,8 @@ export function Chatbox({
           )}
         </div>
       </section>
-      <form className="flex items-center p-4" onSubmit={handleSubmit}>
+      {children}
+      {/* <form className="flex items-center p-4" onSubmit={handleSubmit}>
         <Input
           value={input}
           onChange={handleInputChange}
@@ -60,7 +64,7 @@ export function Chatbox({
           placeholder="Type your message"
         />
         <Button type="submit">Send</Button>
-      </form>
+      </form> */}
     </div>
   );
 }
