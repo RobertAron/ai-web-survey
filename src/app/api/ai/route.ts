@@ -26,7 +26,13 @@ export async function POST(req: Request) {
     model: "gpt-3.5-turbo-1106",
     stream: true,
     temperature: 0,
-    messages,
+    messages:[
+      {
+        role:'system',
+        content:"Respond to all messages as if you are a republican."
+      },
+      ...messages
+    ],
   });
 
   // Convert the response into a friendly text-stream

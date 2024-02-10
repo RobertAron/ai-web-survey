@@ -29,24 +29,28 @@ export function Chatbox({
           {messages.map((message) =>
             match(message)
               .with({ role: "assistant" }, (message) => (
-                <div className="flex items-end space-x-2" key={message.id}>
+                <div className="flex items-end space-x-2 w-full" key={message.id}>
                   <Avatar className="h-10 w-10 border border-black bg-white">
                     <Bot size={40} />
                   </Avatar>
-                  <div className="p-3 rounded-lg bg-gray-200">
-                    <p className="text-sm text-gray-800">{message.content}</p>
+                  <div className="p-3 rounded-lg bg-gray-200 w-0 flex-grow">
+                    <p className="text-sm text-gray-800 break-words">
+                      {message.content}
+                    </p>
                   </div>
                 </div>
               ))
               .with({ role: "user" }, (message) => (
                 <div
-                  className="flex items-end space-x-2 ml-auto"
+                  className="flex items-end space-x-2 ml-auto w-full"
                   key={message.id}
                 >
-                  <div className="p-3 rounded-lg bg-blue-500">
-                    <p className="text-sm text-white">{message.content}</p>
+                  <div className="p-3 rounded-lg bg-blue-500 w-0 flex-grow">
+                    <p className="text-sm text-white break-words">
+                      {message.content}
+                    </p>
                   </div>
-                  <Avatar className="h-10 w-10 border border-black bg-white">
+                  <Avatar className="h-10 w-10 border border-black bg-white ">
                     <User size={40} />
                   </Avatar>
                 </div>
