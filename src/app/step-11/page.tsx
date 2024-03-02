@@ -10,42 +10,66 @@ export default async function Home() {
   await redirectCheck();
   return (
     <Main>
-      <PageTitle
-        title="De-brief"
-        subtitle="Debriefing Form for Participation in a Research Study University of Washington"
-      />
-      <H3>Thank you for your participation!</H3>
-      <hr />
+      <PageTitle title="Debriefing Form for Participation in a Research Study University of Washington" />
       <p>
         Thank you for your participation in our study! Your participation is
         grealy appreciated.
       </p>
       <H3>Purpose of the Study</H3>
       <p>
-        {" "}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lorem
-        eros, luctus dapibus est ut, tristique tristique orci. Curabitur non
-        luctus lacus. Nulla facilisi. Nunc tellus ipsum, consequat vel arcu id,
-        pretium vehicula tellus. Fusce vulputate facilisis placerat. Morbi
-        rutrum purus non tristique eleifend. Pellentesque ultrices metus et
-        sapien blandit, et dapibus ante interdum. Curabitur ac facilisis risus.
-        Nulla commodo, enim in mollis porta, nibh odio lacinia ligula, et
-        vehicula libero nisi ut ex. Vivamus scelerisque, metus a suscipit
-        viverra, enim turpis sagittis massa, ac cursus ipsum risus at risus.
-        Suspendisse leo erat, molestie ac imperdiet ac, tincidunt sit amet
-        augue. Integer et mi eu purus molestie consectetur vitae non ligula.
-        Mauris a velit sit amet lorem varius egestas. Morbi lectus mi, volutpat
-        in nisl eget, finibus maximus nisl. Aenean in urna a diam rhoncus
-        laoreet. Phasellus semper, enim nec hendrerit ullamcorper, neque libero
-        dignissim urna, in cursus augue risus et dui. Morbi posuere augue quis
-        ante sodales, nec dapibus eros interdum. Quisque egestas gravida nunc.
-        Aliquam volutpat vel justo in malesuada. Aenean aliquet dolor vel magna
-        vehicula placerat. Aliquam erat volutpat. Curabitur fermentum enim odio,
-        at cursus magna rutrum eu. Ut vel iaculis lorem. Vivamus quis sodales
-        justo. Aliquam porttitor arcu congue, porta dui vel, scelerisque augue.
-        Nullam condimentum pulvinar accumsan. Aenean dictum quam id dui tempor
-        facilisis. Ut auctor ligula felis. Proin mollis interdum diam, viverra
-        dictum quam commodo ac.
+        Earlier in our consent form we did not tell you the aim of our study but
+        that we would be using deception as part of our experiment. Our study is
+        about how biased modern AI models can potentially influence humans. In
+        Task 1 and 2, we instructed the models to generate text which was either
+        leaning toward a United States Republican or a United States Democrat.
+        We were interested in how these bias models could change the opinions of
+        the participants.
+      </p>
+      <p>
+        Unfortunately, to properly test our hypothesis, we could not provide you
+        with all these details prior to your participation. This ensures that
+        your reactions in this study were spontaneous and not influenced by
+        prior knowledge about the purpose of the study. We again note that the
+        models from Task 1 and Task 2 were altered to generate bias (and
+        potentially false) information. If we had told you the actual purposes
+        of our study, your ability to accurately rank your opinions could have
+        been affected. We regret the deception, but we hope you understand the
+        reason for it.
+      </p>
+      <H3>Confidentiality</H3>
+      <p>
+        Please note that although the purpose of this study was not revealed
+        until now, everything on the consent form is correct. This includes the
+        ways in which we will keep your data confidential.
+      </p>
+      <p>
+        Now that you know the true purpose of our study and are fully informed,
+        you may decide that you do not want your data used in this research. If
+        you would like your data removed from the study and permanently deleted,
+        please click “DO NOT INCLUDE MY DATA” down below. Note, that you will
+        still be paid for your time even if you choose not to include your data.
+      </p>
+      <p>
+        Please do not disclose research procedures and/or hypotheses to anyone
+        who might participate in this study in the future as this could affect
+        the results of the study.
+      </p>
+      <H3>Useful Contact Information</H3>
+      <p>
+        If you have any questions or concerns regarding this study, its purpose,
+        or procedures, or if you have a research-related problem, please feel
+        free to contact the researcher(s), Jillian Fisher (jrfish@uw.edu). If
+        you have any questions concerning your rights as a research subject, you
+        may contact the University of Washington Human Subject Division (HSD) at
+        (206) 543 – 0098 or hsdinfo@uw.edu.
+      </p>
+      <p>
+        If you feel upset after having completed the study or find that some
+        questions or aspects of the study triggered distress, talking with a
+        qualified clinician may help.
+      </p>
+      <p className="underline font-semibold">
+        *** Once again, thank you for your participation in this study! ***
       </p>
     </Main>
   );

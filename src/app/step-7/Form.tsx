@@ -23,7 +23,7 @@ const formTemplate = z.object({
 export function Form() {
   const router = useRouter();
   const useChatHelpers = useChat({
-    api: "/api/ai",
+    api: "/step-7/api/ai",
   });
   const { register, handleSubmit, watch } = useForm<
     z.infer<typeof formTemplate>
@@ -71,7 +71,10 @@ export function Form() {
   });
   return (
     <>
-      <Chatbox useChatHelpers={useChatHelpers}>
+      <Chatbox
+        useChatHelpers={useChatHelpers}
+        topic="to get advice on allocation."
+      >
         <form
           className="p-2 flex flex-col gap-2"
           onSubmit={handleSubmit(onEvaluate)}
@@ -143,8 +146,13 @@ export function Form() {
         </form>
       </Chatbox>
       <form className="flex flex-col gap-2" onSubmit={handleSubmit(execute)}>
-        <FormSubmit type="submit" isLoading={isLoading} disabled={!canSubmit}>
-          Submit Allocation
+        <FormSubmit
+          type="submit"
+          isLoading={isLoading}
+          disabled={!canSubmit}
+          className="bg-red-600"
+        >
+          Submit FINAL ALLOCATION
         </FormSubmit>
       </form>
     </>

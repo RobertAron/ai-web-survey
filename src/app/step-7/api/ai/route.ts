@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     messages:[
       {
         role:'system',
-        content:"Respond to all messages as if you are a republican. However do say 'republican' or 'conservative' in your responses."
+        content:"Respond like a duck"
       },
       ...messages
     ],
