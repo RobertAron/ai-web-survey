@@ -1,18 +1,19 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
 import { AlertTriangle, Bot, User } from "lucide-react";
 import { match } from "ts-pattern";
-import { UseChatHelpers, useChat } from "ai/react";
+import { UseChatHelpers } from "ai/react";
 import React from "react";
 
 export function Chatbox({
   useChatHelpers,
   children,
+  topic,
 }: {
   useChatHelpers: UseChatHelpers;
   children?: React.ReactNode;
+  topic: string;
 }) {
   const { messages, input, handleInputChange, handleSubmit } = useChatHelpers;
   return (
@@ -24,7 +25,7 @@ export function Chatbox({
         <div className="flex flex-col gap-3 mb-auto">
           <div className="bg-[#e89822] text-white rounded p-2 flex gap-2">
             <AlertTriangle />
-            <p>Interact with this chatbot to learn about League of Legends</p>
+            <p>Interact with this chatbot {topic}</p>
           </div>
           {messages.map((message) =>
             match(message)

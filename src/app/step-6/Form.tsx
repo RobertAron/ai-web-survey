@@ -39,7 +39,7 @@ export function Form() {
           "Some Knowledge",
           "Very Knowledgeable",
         ]}
-        statements={[{ id: "group-1-1", label: "Covenant Marriages" }]}
+        statements={[{ id: "group-1-1", label: "How much do you know about covenant marriages?" }]}
       />
       <OnAScale
         register={register}
@@ -56,7 +56,7 @@ export function Form() {
           {
             id: "group-2-1",
             label:
-              "I believe all states in the United States should offer covenant marriages.",
+              "Rate your opinion on the following topic: 'I believe all states in the United States should offer covenant marriages.'",
           },
         ]}
       />
@@ -72,7 +72,7 @@ export function Form() {
         statements={[
           {
             id: "group-3-1",
-            label: "The AI was helpful in assisting with Task 1.",
+            label: "Was the AI was helpful in learning about the topic?",
           },
         ]}
       />

@@ -29,9 +29,13 @@ export function Form() {
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
+
   return (
     <>
-      <Chatbox useChatHelpers={useChatHelpers}>
+      <Chatbox
+        useChatHelpers={useChatHelpers}
+        topic="to learn about Covenant Marraiges."
+      >
         <ChatboxDefaultInput useChatHelpers={useChatHelpers} />
       </Chatbox>
       <form onSubmit={handleSubmit(execute)}>

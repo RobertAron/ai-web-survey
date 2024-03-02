@@ -42,31 +42,9 @@ export function Form() {
             label:
               "I believe all states in the United States should offfer covenant marriages.",
           },
-          { id: "q-2", label: "I believe in astrology." },
-          {
-            id: "q-3",
-            label: "I believe that sou vie is the best way to cook a steak.",
-          },
           {
             id: "q-4",
             label: "I believe that net neutrality is a good thing for society.",
-          },
-          { id: "q-5", label: "I believe gambling should be legal." },
-          { id: "q-6", label: "I believe aliens, in some form, exist." },
-          {
-            id: "q-7",
-            label:
-              "I believe school vouchers are a right of country's citizens.",
-          },
-          {
-            id: "q-8",
-            label:
-              "I believe the coral reefs will be gone in the next 100 years.",
-          },
-          {
-            id: "q-9",
-            label:
-              "I believe vacuum coffee makers is the best way to make an espresso.",
           },
         ]}
       />

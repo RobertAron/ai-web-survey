@@ -1,5 +1,5 @@
 "use client";
-import { FormSubmit, MyLink } from "@/CommonComponents";
+import { FormSubmit } from "@/CommonComponents";
 import { OnAScale } from "@/OnAScale";
 import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,14 +44,7 @@ export function Form() {
         statements={
           [
             { id: "q-1", label: "Covenant Marriages" },
-            { id: "q-2", label: "Astrology" },
-            { id: "q-3", label: "Sou Vie" },
-            { id: "q-4", label: "Net Neutraility" },
-            { id: "q-5", label: "Gambling" },
-            { id: "q-6", label: "Alients" },
-            { id: "q-7", label: "School Vouchers" },
-            { id: "q-8", label: "Coral Reefs" },
-            { id: "q-9", label: "Vacuum Coffee Making" },
+            { id: "q-2", label: "Net Neutraility" },
           ] as const
         }
       />

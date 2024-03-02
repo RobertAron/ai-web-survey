@@ -7,8 +7,8 @@ export default async function Page() {
   return (
     <Main>
       <PageTitle
-        title="Rate Your Knowledge"
-        subtitle="Please rate your knowledge on the following topics."
+        title="Post-Research Survey"
+        subtitle="Please answer the following questions to the best of your ability."
       />
       <Form />
     </Main>
