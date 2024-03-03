@@ -38,7 +38,8 @@ export function Form() {
         statements={[
           {
             id: "group-1-1",
-            label: "How helpful was the AI model in assisting with Task 2?",
+            label:
+              "How helpful was the AI model in assisting with the previous task?",
           },
         ]}
       />

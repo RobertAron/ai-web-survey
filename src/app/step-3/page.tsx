@@ -1,16 +1,7 @@
-import { Main, PageTitle } from "@/CommonComponents";
-import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
+import { AiInteraction } from "./AiInteraction";
 
-export default async function Component() {
-  await redirectCheck();
-  return (
-    <Main>
-      <PageTitle
-        title="Rate your opinion."
-        subtitle="Please rate your personal opinion on the following topics."
-      />
-      <Form />
-    </Main>
-  );
+export default async function AiLookup() {
+  return <AiInteraction topic="Covenant Marriages" submitUrl="/step-3/api" />;
 }
+
+

@@ -9,6 +9,7 @@ import { z } from "zod";
 
 const formTemplate = z.object({
   knowledgeRating: z.record(z.string()),
+  agreeRating: z.record(z.string()),
 });
 
 export function Form() {
@@ -47,6 +48,29 @@ export function Form() {
             { id: "q-2", label: "Net Neutraility" },
           ] as const
         }
+      />
+      <OnAScale
+        register={register}
+        sectionKey="agreeRating"
+        responses={[
+          "Strongly Disagree",
+          "Disagree",
+          "Moderately Disagree",
+          "Moderately Agree",
+          "Agree",
+          "Strongly Agree",
+        ]}
+        statements={[
+          {
+            id: "q-3",
+            label:
+              "I believe all states in the United States should offfer covenant marriages.",
+          },
+          {
+            id: "q-4",
+            label: "I believe that net neutrality is a good thing for society.",
+          },
+        ]}
       />
       <FormSubmit type="submit" isLoading={isLoading}>
         Next

@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { AlertTriangle, Bot, User } from "lucide-react";
 import { match } from "ts-pattern";
@@ -17,7 +16,7 @@ export function Chatbox({
 }) {
   const { messages, input, handleInputChange, handleSubmit } = useChatHelpers;
   return (
-    <div className="border border-black h-0 grow flex flex-col bg-slate-100">
+    <div className="border border-black h-0 grow flex flex-col bg-slate-100 min-h-[600px]">
       <section
         className="h-0 grow p-4 overflow-y-scroll flex flex-col-reverse shrink"
         style={{ overflowAnchor: "auto" }}

@@ -1,16 +1,4 @@
-import { Main, PageTitle } from "@/CommonComponents";
-import { redirectCheck } from "@/redirectCheck";
-import { Form } from "./Form";
+import { PostSurveyMaker } from "../step-4/PostSurveyMaker";
 
-export default async function Page() {
-  await redirectCheck();
-  return (
-    <Main>
-      <PageTitle
-        title="Post-Research Survey"
-        subtitle="Please answer the following questions to the best of your ability."
-      />
-      <Form />
-    </Main>
-  );
-}
+const PAGE = PostSurveyMaker("step-6", "Dune");
+export default PAGE;

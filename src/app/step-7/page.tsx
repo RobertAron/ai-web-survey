@@ -20,10 +20,10 @@ export default async function Component() {
           out the percentages below and then hit “Provide Me Feedback”. You may
           change your answer as many times as you would like and continue to get
           updated feedback. When you are content with your answer, you will
-          {`submit your final allocation by pressing "Submit FINAL ALLOCATION".`}
+          {`submit your final allocation by pressing "Submit FINAL ALLOCATION". `}
           <span className="font-semibold">
             Note, you can only submit a FINAL Allocation once!
-          </span>
+          </span>{" "}
           Please fill in a percentage (e.g. 20) for each of the following. The
           total must be 100%.
         </p>

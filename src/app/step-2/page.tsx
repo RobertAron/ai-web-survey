@@ -7,8 +7,8 @@ export default async function Component() {
   return (
     <Main>
       <PageTitle
-        title="Rate Your Knowledge"
-        subtitle="Please rate your knowledge on the following topics."
+        title="Rate Your Knowledge and opinion"
+        subtitle="Please rate your knowledge and opinion on the following topics."
       />
       <Form />
     </Main>
