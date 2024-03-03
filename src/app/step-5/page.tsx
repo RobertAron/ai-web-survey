@@ -1,27 +1,5 @@
-import { Main, PageTitle } from "@/CommonComponents";
-import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
+import { AiInteraction } from "../step-3/page";
 
-export default async function Component() {
-  await redirectCheck();
-  return (
-    <Main>
-      <PageTitle title="Engage & Learn: Interactive Chatbot" />
-      <p>
-        Use the chatbox below to learn about the given topic. Remember you will
-        be required to have at
-        <span className="font-semibold italic">least 5 interactions</span>
-        with the model on each topic. However, you may do up to 20 interactions.
-        An interaction can be in the form of a question, statement, or request.
-      </p>
-      <p>
-        To use the chatbox, write your message in the text box where it says
-        {`"Type your message" and press the "Send" button. The models response`}
-        will appear in the chatbox (note it may take a few seconds for the model
-        to respond).
-      </p>
-      <p className="text-lg font-semibold">Topic: Covenant Marriages</p>
-      <Form />
-    </Main>
-  );
+export default async function AiLookup() {
+  return <AiInteraction topic="Dune" submitUrl="/step-5/api" />;
 }

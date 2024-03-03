@@ -1,28 +1,86 @@
 "use client";
+import { FormSubmit } from "@/CommonComponents";
 import { OnAScale } from "@/OnAScale";
-import { FormSubmit, MyLink } from "@/CommonComponents";
+import { useAsyncAction } from "@/useAsyncAction";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
-import { useAsyncAction } from "@/useAsyncAction";
 
-const formTemplate = z.object({});
+const formTemplate = z.object({
+  knowledge: z.record(z.string()),
+  agree: z.record(z.string()),
+  helpful: z.record(z.string()),
+});
 
-export function Form() {
+export function Form({ currentStep }: { currentStep: string }) {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
-  const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
-    fetch("/step-4/api", { method: "POST", body: JSON.stringify(d) })
+    fetch(`/${currentStep}/api`, {
+      method: "POST",
+      body: JSON.stringify(d),
+    })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(execute)}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(execute)}>
+      <OnAScale
+        register={register}
+        sectionKey="knowledge"
+        responses={[
+          "Never Heard of this",
+          "No Knowledge",
+          "Some Knowledge",
+          "Very Knowledgeable",
+        ]}
+        statements={[
+          {
+            id: "group-1-1",
+            label: "How much do you know about covenant marriages?",
+          },
+        ]}
+      />
+      <OnAScale
+        register={register}
+        sectionKey="agree"
+        responses={[
+          "Strongly Disagree",
+          "Disagree",
+          "Moderately Disagree",
+          "Moderately Agree",
+          "Agree",
+          "Strongly Agree",
+        ]}
+        statements={[
+          {
+            id: "group-2-1",
+            label:
+              "Rate your opinion on the following topic: 'I believe all states in the United States should offer covenant marriages.'",
+          },
+        ]}
+      />
+      <OnAScale
+        register={register}
+        sectionKey="helpful"
+        responses={[
+          "Not helpful",
+          "Slightly helpful",
+          "Helpful",
+          "Extremely Helpful",
+        ]}
+        statements={[
+          {
+            id: "group-3-1",
+            label: "Was the AI was helpful in learning about the topic?",
+          },
+        ]}
+      />
       <FormSubmit type="submit" isLoading={isLoading}>
         Next
       </FormSubmit>

@@ -3,22 +3,48 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-const formTemplate = z.object({});
+const formTemplate = z.object({
+  knowledge: z.record(z.string()),
+  agree: z.record(z.string()),
+  helpful: z.record(z.string()),
+});
 
-export async function POST(req: NextRequest, res: NextResponse) {
-  const data = await req.json();
-  const parsedData = formTemplate.parse(data);
-  const nextPage = "/step-5";
-  const userId = cookies().get("user-id");
-  await prismaClient.$transaction([
-    prismaClient.user_page_tracking.update({
-      where: {
-        user_id: userId?.value,
-      },
-      data: {
-        current_page: nextPage,
-      },
-    }),
-  ]);
-  return Response.json({ nextPage });
+export function PostGenerator(currentStep: string, nextPage: string) {
+  return async function POST(req: NextRequest, res: NextResponse) {
+    const data = await req.json();
+    const parsedData = formTemplate.parse(data);
+    const userId = cookies().get("user-id");
+    await prismaClient.$transaction([
+      prismaClient.form_response.createMany({
+        data: [
+          ...Object.entries(parsedData.knowledge).map(([key, value]) => ({
+            user_id: userId?.value ?? "",
+            question_id: `${currentStep}-knowledge-${key}`,
+            response: `${value}`,
+          })),
+          ...Object.entries(parsedData.agree).map(([key, value]) => ({
+            user_id: userId?.value ?? "",
+            question_id: `${currentStep}-agree-${key}`,
+            response: `${value}`,
+          })),
+          ...Object.entries(parsedData.helpful).map(([key, value]) => ({
+            user_id: userId?.value ?? "",
+            question_id: `${currentStep}-helpful-${key}`,
+            response: `${value}`,
+          })),
+        ],
+      }),
+      prismaClient.user_page_tracking.update({
+        where: {
+          user_id: userId?.value,
+        },
+        data: {
+          current_page: nextPage,
+        },
+      }),
+    ]);
+    return Response.json({ nextPage });
+  };
 }
+
+export const POST = PostGenerator("step-4", "/step-5");

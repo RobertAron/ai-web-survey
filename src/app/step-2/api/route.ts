@@ -5,6 +5,7 @@ import { z } from "zod";
 
 const formTemplate = z.object({
   knowledgeRating: z.record(z.string()),
+  agreeRating: z.record(z.string()),
 });
 
 export async function POST(req: NextRequest, res: NextResponse) {

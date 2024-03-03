@@ -1,6 +1,6 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import { Label, SubLabel } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {
   SelectValue,
@@ -154,8 +154,8 @@ export function Form() {
     ...restPartisanRegister
   } = register("partisan");
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(execute)}>
-      <div className="space-y-2">
+    <form className="space-y-8" onSubmit={handleSubmit(execute)}>
+      <div className="space-y-1 flex flex-col">
         <Label htmlFor="age">Age</Label>
         <Input
           id="age"
@@ -167,8 +167,9 @@ export function Form() {
           error={errors.ageResponse?.message?.toString()}
         />
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="gender">Gender: How do you describe yourself?</Label>
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="gender">Gender</Label>
+        <SubLabel>How do you describe yourself?</SubLabel>
         <Select
           {...restGenderRegister}
           onValueChange={(val) =>
@@ -188,11 +189,12 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="hispanic">
-          Ethnicity: This question is about Hispanic ethnicity. Are you of
-          Spanish, Hispanic, or Latino descent?
-        </Label>
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="hispanic">Ethnicity</Label>
+        <SubLabel>
+          This question is about Hispanic ethnicity. Are you of Spanish,
+          Hispanic, or Latino descent?
+        </SubLabel>
         <Select
           {...restHispanicRegister}
           onValueChange={(val) =>
@@ -222,14 +224,15 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="race">
-          Race: Please indicate what you consider your racial background to be.
-          We greatly appreciate your help. The categories we use may not fully
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="race">Race</Label>
+        <SubLabel>
+          Please indicate what you consider your racial background to be. We
+          greatly appreciate your help. The categories we use may not fully
           describe you, but they do match those used by the Census Bureau. It
           helps us to know how similar the group of participants is to the U.S.
           population.
-        </Label>
+        </SubLabel>
         <Select
           {...restRaceRegister}
           onValueChange={(val) =>
@@ -262,10 +265,11 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="education">
-          Education: What is the highest level of school you have completed?
-        </Label>
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="education">Education</Label>
+        <SubLabel>
+          What is the highest level of school you have completed?
+        </SubLabel>
         <Select
           {...restEducationRegister}
           onValueChange={(val) =>
@@ -301,16 +305,17 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="income">
-          Income: The next question is about the total income of YOUR HOUSEHOLD
-          for 2023. Please include your own income PLUS the income of all
-          members living in your household (including cohabiting partners and
-          armed forces members living at home). Please count income BEFORE TAXES
-          and from all sources (such as wages, salaries, tips, net income from a
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="income">Income</Label>
+        <SubLabel>
+          The next question is about the total income of YOUR HOUSEHOLD for
+          2023. Please include your own income PLUS the income of all members
+          living in your household (including cohabiting partners and armed
+          forces members living at home). Please count income BEFORE TAXES and
+          from all sources (such as wages, salaries, tips, net income from a
           business, interest, dividends, child support, alimony, and Social
           Security, public assistance, pensions, or retirement benefits).
-        </Label>
+        </SubLabel>
         <Select
           {...restIncomeRegister}
           onValueChange={(val) =>
@@ -344,10 +349,9 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="ideology">
-          Ideology: How would you rate yourself on this scale?
-        </Label>
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="ideology">Ideology</Label>
+        <SubLabel>How would you rate yourself on this scale?</SubLabel>
         <Select
           {...restIdeologyRegister}
           onValueChange={(val) =>
@@ -370,11 +374,12 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="partisan">
-          Partisan: Generally speaking, do you usually think of yourself as a
-          Democrat, a Republican, an independent, or what?
-        </Label>
+      <div className="space-y-1 flex flex-col">
+        <Label htmlFor="partisan">Partisan</Label>
+        <SubLabel>
+          Generally speaking, do you usually think of yourself as a Democrat, a
+          Republican, an independent, or what?
+        </SubLabel>
         <Select
           {...restPartisanRegister}
           onValueChange={(val) =>
