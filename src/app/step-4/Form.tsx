@@ -13,7 +13,13 @@ const formTemplate = z.object({
   helpful: z.record(z.string()),
 });
 
-export function Form({ currentStep }: { currentStep: string }) {
+export function Form({
+  currentStep,
+  topic,
+}: {
+  currentStep: string;
+  topic: string;
+}) {
   const router = useRouter();
   const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
@@ -42,7 +48,7 @@ export function Form({ currentStep }: { currentStep: string }) {
         statements={[
           {
             id: "group-1-1",
-            label: "How much do you know about covenant marriages?",
+            label: `How much do you know about ${topic}?`,
           },
         ]}
       />
