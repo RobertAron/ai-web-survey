@@ -7,7 +7,7 @@ const formTemplate = z.object({
   agreeRating: z.record(z.string()),
 });
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = formTemplate.parse(data);
   const nextPage = "/step-9";

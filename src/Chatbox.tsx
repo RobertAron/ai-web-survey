@@ -14,7 +14,7 @@ export function Chatbox({
   children?: React.ReactNode;
   topic: string;
 }) {
-  const { messages, input, handleInputChange, handleSubmit } = useChatHelpers;
+  const { messages } = useChatHelpers;
   return (
     <div className="border border-black h-0 grow flex flex-col bg-slate-100 min-h-[600px]">
       <section

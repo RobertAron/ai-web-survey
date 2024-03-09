@@ -15,11 +15,11 @@ export function Form({ topic, submitUrl }: { topic: string; submitUrl: string })
   const useChatHelpers = useChat({
     api: "/step-3/api/ai",
   });
-  const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
+  const { handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
   const router = useRouter();
-  const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async () =>
     fetch(submitUrl, {
       method: "POST",
       body: JSON.stringify({ messages: useChatHelpers.messages }),

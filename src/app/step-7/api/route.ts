@@ -20,7 +20,7 @@ const formTemplate = z.object({
 });
 
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = formTemplate.parse(data);
   const nextPage = "/step-8";

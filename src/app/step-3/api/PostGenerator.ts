@@ -13,7 +13,7 @@ const formTemplate = z.object({
 });
 
 export function PostGenerator(currentStep: string, nextPage: string) {
-  return async function POST(req: NextRequest, res: NextResponse) {
+  return async function POST(req: NextRequest, _res: NextResponse) {
     const data = await req.json();
     console.log(data);
     const parsedData = formTemplate.parse(data);
