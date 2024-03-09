@@ -3,12 +3,11 @@ import { prismaClient } from "./database";
 import { redirect } from "next/navigation";
 
 export async function redirectCheck() {
-  const cookieStore = cookies();
   const headersList = headers();
   const url = headersList.get("x-url") || "";
-  const userIdCookie = cookieStore.get("user-id");
+  const userIdCookie = getUserId()
   const isOnHomePage = url === "/";
-  const noUserId = userIdCookie === undefined;
+  const noUserId = userIdCookie === null;
   // Not logged in - load the home page
   if (noUserId) {
     if (isOnHomePage) return null;
@@ -18,7 +17,7 @@ export async function redirectCheck() {
   }
   const dbResponse = await prismaClient.user_page_tracking.findUnique({
     where: {
-      user_id: userIdCookie?.value,
+      user_id: userIdCookie,
     },
   });
   const notValidLogin = dbResponse === null;
@@ -34,4 +33,10 @@ export async function redirectCheck() {
   }
   console.log("redirect page - incorrect page requested");
   redirect(dbResponse.current_page);
+}
+
+export function getUserId() {
+  const cookieStore = cookies();
+  const userId = cookieStore.get("user-id")?.value;
+  return userId ?? null;
 }

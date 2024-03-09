@@ -1,7 +1,11 @@
 import { AiInteraction } from "./AiInteraction";
+import { redirectCheck } from "@/redirectCheck";
+import { getUserQuestion, topics } from "@/randomQuestions";
 
 export default async function AiLookup() {
-  return <AiInteraction topic="Covenant Marriages" submitUrl="/step-3/api" />;
+  await redirectCheck();
+  const result = await getUserQuestion(0)
+  return (
+    <AiInteraction topic={topics[result.question]} submitUrl="/step-3/api" />
+  );
 }
-
-
