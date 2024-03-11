@@ -33,9 +33,7 @@ export default async function Home() {
       <p className="[&>kbd]:border [&>kbd]:border-b-2 [&>kbd]:border-gray-400 [&>kbd]:bg-gray-200 [&>kbd]:p-0.5 [&>kbd]:rounded-sm ">
         This experiment should be completed on a regular desktop computer. We
         strongly recommend using <i>Google Chrome or Mozilla Firefox browser</i>{" "}
-        for this test. Before starting, please switch the browser to fullscreen
-        mode press <kbd>F11</kbd> or on mac <kbd>Ctrl</kbd>+ <kbd>Command</kbd>{" "}
-        + <kbd>F</kbd>.
+        for this test.
       </p>
       <H3>Anonymity and Privacy:</H3>
       <p>
@@ -43,8 +41,9 @@ export default async function Home() {
         purposes. The data do not provide any information about you personally.
         Your identity will be kept strictly confidential.
       </p>
-      <H3>Content:</H3>
+      <H3>Consent:</H3>
       <p>{`By pressing the "Consent & Continue" button, you declare that you have read and understood the information above. You confirm that you will be concentrating on the task and complete it to the best of your abilities.`}</p>
+      <p><b>**Please enter your unique Prolific ID before continuing.**</b> </p>      
       <Form />
     </Main>
   );

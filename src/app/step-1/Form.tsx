@@ -19,7 +19,7 @@ import { useAsyncAction } from "@/useAsyncAction";
 
 const UserSchema = z.object({
   ageResponse: z.coerce.number().positive().max(120),
-  gender: z.enum(["male", "female", "other", "preferNotToSay"]),
+  gender: z.enum(["male", "female", "other"]),
   hispanic: z.enum([
     "no",
     "mexican",
@@ -185,14 +185,13 @@ export function Form() {
             <SelectItem value="male">Male</SelectItem>
             <SelectItem value="female">Female</SelectItem>
             <SelectItem value="other">I identify in some other way</SelectItem>
-            <SelectItem value="preferNotToSay">Prefer not to say</SelectItem>
           </SelectContent>
         </Select>
       </div>
       <div className="space-y-1 flex flex-col">
         <Label htmlFor="hispanic">Ethnicity</Label>
         <SubLabel>
-          This question is about Hispanic ethnicity. Are you of Spanish,
+          Are you of Spanish,
           Hispanic, or Latino descent?
         </SubLabel>
         <Select
@@ -227,8 +226,7 @@ export function Form() {
       <div className="space-y-1 flex flex-col">
         <Label htmlFor="race">Race</Label>
         <SubLabel>
-          Please indicate what you consider your racial background to be. We
-          greatly appreciate your help. The categories we use may not fully
+          Please indicate what you consider your racial background to be. The categories we use may not fully
           describe you, but they do match those used by the Census Bureau. It
           helps us to know how similar the group of participants is to the U.S.
           population.

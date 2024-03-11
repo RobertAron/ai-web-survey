@@ -64,7 +64,7 @@ export function Form() {
           {
             id: "q-3",
             label:
-              "I believe all states in the United States should offfer covenant marriages.",
+              "I believe all states in the United States should offer covenant marriages.",
           },
           {
             id: "q-4",
