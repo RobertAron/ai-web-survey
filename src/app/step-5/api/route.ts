@@ -1,3 +1,3 @@
-import { PostGenerator } from "@/app/step-3/api/PostGenerator";
+import { PostGenerator } from "./PostGenerator";
 
 export const POST = PostGenerator("step-5", "/step-6");

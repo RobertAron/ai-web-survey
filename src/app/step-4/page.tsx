@@ -1,4 +1,14 @@
-import { PostSurveyMaker } from "./PostSurveyMaker";
+import { AiInteraction } from "./AiInteraction";
+import { redirectCheck } from "@/redirectCheck";
+import { getUserQuestion, topics } from "@/randomQuestions";
 
-const PAGE = PostSurveyMaker("step-4", 0);
-export default PAGE;
+export default async function AiLookup() {
+  await redirectCheck();
+  const result = await getUserQuestion(0);
+  return (
+    <AiInteraction
+      topic={topics[result.question].topic}
+      submitUrl="/step-4/api"
+    />
+  );
+}

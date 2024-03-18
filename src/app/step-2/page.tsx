@@ -8,7 +8,7 @@ export default async function Component() {
     <Main>
       <PageTitle
         title="Rate Your Knowledge and opinion"
-        subtitle="Please rate your knowledge and opinion on the following topics."
+        subtitle="Please rate your knowledge and opinion on the following topic."
       />
       <Form />
     </Main>

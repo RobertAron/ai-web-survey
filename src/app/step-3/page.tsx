@@ -1,11 +1,4 @@
-import { AiInteraction } from "./AiInteraction";
-import { redirectCheck } from "@/redirectCheck";
-import { getUserQuestion, topics } from "@/randomQuestions";
+import { SurveyQuestionMaker } from "./SurveyQuestionMaker";
 
-export default async function AiLookup() {
-  await redirectCheck();
-  const result = await getUserQuestion(0)
-  return (
-    <AiInteraction topic={topics[result.question]} submitUrl="/step-3/api" />
-  );
-}
+const PAGE = SurveyQuestionMaker("step-3", 0);
+export default PAGE;

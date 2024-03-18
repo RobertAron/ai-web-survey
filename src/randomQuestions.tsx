@@ -2,16 +2,57 @@ import { prismaClient } from "./database";
 import { getUserId } from "./redirectCheck";
 
 export const topics = [
-  "The future of artificial intelligence in everyday life",
-  "Sustainable fashion trends and their impact on the environment",
-  "Exploring the benefits and challenges of remote work culture",
-  "The psychology behind decision-making in consumer behavior",
-  "The rise of plant-based diets and their effects on personal health",
-  "Urban gardening initiatives and their role in fostering community resilience",
-  "The evolution of digital storytelling in interactive media",
-  "Innovative approaches to renewable energy technology",
-  "Cultural appropriation versus cultural appreciation in the fashion industry",
-  "The influence of social media on mental health and well-being",
+  {
+    topic: "The future of artificial intelligence in everyday life",
+    statement: "AI will revolutionize various aspects of daily living.",
+  },
+  {
+    topic: "Sustainable fashion trends and their impact on the environment",
+    statement:
+      "Fashion industry practices significantly contribute to environmental degradation.",
+  },
+  {
+    topic: "Exploring the benefits and challenges of remote work culture",
+    statement:
+      "Remote work improves work-life balance but poses challenges for collaboration.",
+  },
+  {
+    topic: "The psychology behind decision-making in consumer behavior",
+    statement:
+      "Consumer decisions are influenced by subconscious psychological factors.",
+  },
+  {
+    topic: "The rise of plant-based diets and their effects on personal health",
+    statement:
+      "Adopting a plant-based diet can lead to improved health outcomes.",
+  },
+  {
+    topic:
+      "Urban gardening initiatives and their role in fostering community resilience",
+    statement:
+      "Urban gardening strengthens community bonds and enhances food security.",
+  },
+  {
+    topic: "The evolution of digital storytelling in interactive media",
+    statement:
+      "Interactive storytelling platforms redefine audience engagement in media consumption.",
+  },
+  {
+    topic: "Innovative approaches to renewable energy technology",
+    statement:
+      "Renewable energy technologies are essential for combating climate change.",
+  },
+  {
+    topic:
+      "Cultural appropriation versus cultural appreciation in the fashion industry",
+    statement:
+      "The fashion industry often blurs the line between cultural appropriation and cultural appreciation.",
+  },
+  {
+    topic: "The influence of social media on mental health and well-being",
+    statement:
+      "Excessive social media usage negatively impacts mental health and well-being.",
+  },
 ];
 
 function getRandomIntegers(x: number, y: number): [number, number] {

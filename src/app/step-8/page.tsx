@@ -1,16 +1,4 @@
-import { Main, PageTitle } from "@/CommonComponents";
-import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
+import { SurveyQuestionMaker } from "../step-3/SurveyQuestionMaker";
 
-export default async function Component() {
-  await redirectCheck();
-  return (
-    <Main>
-      <PageTitle
-        title="Rate the AI"
-        subtitle="Rate how the AI did in the previous questions"
-      />
-      <Form />
-    </Main>
-  );
-}
+const PAGE = SurveyQuestionMaker("step-8", 1);
+export default PAGE;

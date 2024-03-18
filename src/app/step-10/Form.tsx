@@ -18,7 +18,7 @@ export function Form() {
   });
   const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
-    fetch("/step-8/api", { method: "POST", body: JSON.stringify(d) })
+    fetch("/step-10/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
   const { execute, isLoading } = useAsyncAction(onSubmit, {

@@ -3,7 +3,10 @@ import { redirectCheck } from "@/redirectCheck";
 import { Form } from "./Form";
 import { getUserQuestion, topics } from "@/randomQuestions";
 
-export function PostSurveyMaker(currentStep: string, questionIndex: number) {
+export function SurveyQuestionMaker(
+  currentStep: string,
+  questionIndex: number
+) {
   return async function Page() {
     await redirectCheck();
     const res = await getUserQuestion(questionIndex);
@@ -13,7 +16,11 @@ export function PostSurveyMaker(currentStep: string, questionIndex: number) {
           title="Post-Research Survey"
           subtitle="Please answer the following questions to the best of your ability."
         />
-        <Form currentStep={currentStep} topic={topics[res.question]} />
+        <Form
+          currentStep={currentStep}
+          topic={topics[res.question].topic}
+          statement={topics[res.question].statement}
+        />
       </Main>
     );
   };
