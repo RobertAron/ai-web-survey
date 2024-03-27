@@ -36,7 +36,7 @@ export function OnAScale<T extends UseFormRegister<any>>(
           {...restRegister}
         >
           <div className="grid gap-1">
-            {props.responses.map((response, index) => {
+            {props.responses.map((response) => {
               const uniqueID = `${statement.id}-${response}`;
               return (
                 <Label

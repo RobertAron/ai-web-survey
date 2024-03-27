@@ -1,4 +1,4 @@
-import { PostSurveyMaker } from "../step-4/PostSurveyMaker";
+import { SurveyQuestionMaker } from "../step-3/SurveyQuestionMaker";
 
-const PAGE = PostSurveyMaker("step-6", "Dune");
+const PAGE = SurveyQuestionMaker("step-6", 1);
 export default PAGE;

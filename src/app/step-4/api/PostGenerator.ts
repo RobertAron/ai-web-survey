@@ -4,35 +4,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const formTemplate = z.object({
-  knowledge: z.record(z.string()),
-  agree: z.record(z.string()),
-  helpful: z.record(z.string()),
+  messages: z
+    .object({
+      role: z.enum(["system", "user", "assistant"]),
+      content: z.string(),
+    })
+    .array(),
 });
 
 export function PostGenerator(currentStep: string, nextPage: string) {
-  return async function POST(req: NextRequest, res: NextResponse) {
+  return async function POST(req: NextRequest, _res: NextResponse) {
     const data = await req.json();
+    console.log(data);
     const parsedData = formTemplate.parse(data);
     const userId = cookies().get("user-id");
     await prismaClient.$transaction([
-      prismaClient.form_response.createMany({
-        data: [
-          ...Object.entries(parsedData.knowledge).map(([key, value]) => ({
-            user_id: userId?.value ?? "",
-            question_id: `${currentStep}-knowledge-${key}`,
-            response: `${value}`,
-          })),
-          ...Object.entries(parsedData.agree).map(([key, value]) => ({
-            user_id: userId?.value ?? "",
-            question_id: `${currentStep}-agree-${key}`,
-            response: `${value}`,
-          })),
-          ...Object.entries(parsedData.helpful).map(([key, value]) => ({
-            user_id: userId?.value ?? "",
-            question_id: `${currentStep}-helpful-${key}`,
-            response: `${value}`,
-          })),
-        ],
+      prismaClient.conversation.create({
+        data: {
+          conversation: parsedData.messages,
+          conversation_id: currentStep,
+          user_id: userId?.value ?? "",
+        },
       }),
       prismaClient.user_page_tracking.update({
         where: {

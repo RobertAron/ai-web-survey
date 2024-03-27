@@ -13,16 +13,14 @@ const formTemplate = z.object({
 });
 
 export function Form() {
-  const { register, handleSubmit, formState } = useForm<
+  const { register, handleSubmit } = useForm<
     z.infer<typeof formTemplate>
   >({
     resolver: zodResolver(formTemplate),
   });
-  console.log(formState.errors);
 
   const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = (d) => {
-    console.log("wah?");
     return fetch("/step-2/api", { method: "POST", body: JSON.stringify(d) })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));

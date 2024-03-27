@@ -13,6 +13,7 @@ export function PostGenerator(currentStep: string, nextPage: string) {
     const data = await req.json();
     const parsedData = formTemplate.parse(data);
     const userId = cookies().get("user-id");
+    console.log(`${currentStep}-knowledge`)
     await prismaClient.$transaction([
       prismaClient.form_response.createMany({
         data: [

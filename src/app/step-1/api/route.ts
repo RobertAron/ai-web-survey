@@ -13,7 +13,7 @@ const UserSchema = z.object({
   partisan: z.enum(["democrat", "republican", "independent", "other"]),
 });
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = UserSchema.parse(data);
   const nextPage = "/step-2";

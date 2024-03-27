@@ -11,10 +11,23 @@ datasource db {
 }
 
 model user_page_tracking {
-  user_id      String
-  current_page String
+  user_id                   String
+  current_page              String
+  randomized_user_questions randomized_user_questions[]
 
   @@unique([user_id])
+}
+
+model randomized_user_questions {
+  user_id            String
+  // I named these badly :/
+  // relates to which order the questions should be asked in (which page)
+  question_index     Int
+  // relates to which question to ask
+  question           Int
+  user_page_tracking user_page_tracking @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id, question_index])
 }
 
 model form_response {

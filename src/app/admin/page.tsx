@@ -5,7 +5,7 @@ import { Transform } from "node:stream";
 export const dynamic = 'force-dynamic'
 
 const ts = new Transform({
-  transform(chunk, enc, cb) {
+  transform(chunk, _enc, cb) {
     cb(null, chunk);
   },
 });

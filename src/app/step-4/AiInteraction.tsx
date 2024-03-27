@@ -1,6 +1,5 @@
 import { Main, PageTitle } from "@/CommonComponents";
 import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
 
 
 export async function AiInteraction({
@@ -9,7 +8,6 @@ export async function AiInteraction({
   topic: string;
   submitUrl: string;
 }) {
-  await redirectCheck();
   return (
     <Main>
       <PageTitle title="Engage & Learn: Interactive Chatbot" />

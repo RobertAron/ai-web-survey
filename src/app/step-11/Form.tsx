@@ -10,23 +10,16 @@ import { z } from "zod";
 const formTemplate = z.object({
   knowledge: z.record(z.string()),
   agree: z.record(z.string()),
+  helpful: z.record(z.string()),
 });
 
-export function Form({
-  currentStep,
-  topic,
-  statement,
-}: {
-  currentStep: string;
-  topic: string;
-  statement: string;
-}) {
+export function Form() {
   const router = useRouter();
   const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
-    fetch(`/${currentStep}/api`, {
+    fetch("/step-11/api", {
       method: "POST",
       body: JSON.stringify(d),
     })
@@ -39,35 +32,56 @@ export function Form({
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(execute)}>
       <OnAScale
         register={register}
-        sectionKey="knowledge"
+        sectionKey="agree"
         responses={[
-          "Never Heard of this",
-          "No Knowledge",
-          "Some Knowledge",
-          "Very Knowledgeable",
+          "Definietly No",
+          "Likely No",
+          "Likely Yes",
+          "Definietly Yes",
         ]}
         statements={[
           {
             id: "group-1-1",
-            label: `How knowledgeable are you on this topic: ${topic}?`,
+            label:
+              "Overall, do you feel like the AI models could aid humans in researching opinions?",
+          },
+          {
+            id: "group-1-2",
+            label: "Do you feel like the model was bias in any way?",
           },
         ]}
       />
       <OnAScale
         register={register}
-        sectionKey="agree"
-        responses={[
-          "Strongly Disagree",
-          "Disagree",
-          "Moderately Disagree",
-          "Moderately Agree",
-          "Agree",
-          "Strongly Agree",
-        ]}
+        sectionKey="helpful"
+        responses={["None", "Less than half", "More than half", "Most of them"]}
         statements={[
           {
             id: "group-2-1",
-            label: `How much do you agree with the following: ${statement}`,
+            label:
+              "Was there any comments the AI model made that you did not agree with?",
+          },
+          {
+            id: "group-2-2",
+            label:
+              "Was there any information the AI model presented that you thought was incorrect?",
+          },
+        ]}
+      />
+      <OnAScale
+        register={register}
+        sectionKey="knowledge"
+        responses={[
+          "I don't know anything about them",
+          "I know a little",
+          "I know more than most",
+          "I know a lot",
+        ]}
+        statements={[
+          {
+            id: "group-3-1",
+            label:
+              "Compared to the general public, how knowledgeable are you with AI models?",
           },
         ]}
       />

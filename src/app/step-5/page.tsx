@@ -1,5 +1,4 @@
-import { AiInteraction } from "../step-3/AiInteraction";
+import { SurveyQuestionMaker } from "./SurveyQuestionMaker";
 
-export default async function AiLookup() {
-  return <AiInteraction topic="Dune" submitUrl="/step-5/api" />;
-}
+const PAGE = SurveyQuestionMaker("step-5", 0);
+export default PAGE;
