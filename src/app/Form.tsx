@@ -33,7 +33,7 @@ export function Form() {
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit(execute)}>
       <Input
-        placeholder="Survey ID"
+        placeholder="Prolific ID"
         {...register("surveyId")}
         error={errors.surveyId?.message}
       />
