@@ -1,5 +1,19 @@
-import { Main, PageTitle } from "@/CommonComponents";
+import { FormSubmit, Main, PageTitle } from "@/CommonComponents";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { buttonVariants } from "@/components/ui/button";
+import { deleteUserData } from "@/deleteUserData";
+import { cn } from "@/lib/utils";
 import { redirectCheck } from "@/redirectCheck";
+import { redirect } from "next/navigation";
 import React from "react";
 
 function H3({ children }: { children: React.ReactNode }) {
@@ -8,6 +22,12 @@ function H3({ children }: { children: React.ReactNode }) {
 
 export default async function Home() {
   await redirectCheck();
+  async function onDelete(_formData: FormData) {
+    "use server";
+    console.log("on server?");
+    await deleteUserData();
+    redirect(`/`);
+  }
   return (
     <Main>
       <PageTitle title="Debriefing Form for Participation in a Research Study University of Washington" />
@@ -71,6 +91,38 @@ export default async function Home() {
       <p className="underline font-semibold">
         *** Once again, thank you for your participation in this study! ***
       </p>
+      <div className="flex gap-2 justify-between">
+        <AlertDialog>
+          <AlertDialogTrigger className="underline text-gray-700/90">
+            Privacy
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete your submissions</AlertDialogTitle>
+              <AlertDialogDescription>
+                Deleting your is a not a permanent action. Are you sure you want
+                to continue?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter className="flex">
+              <AlertDialogCancel className="grow" autoFocus>
+                Cancel
+              </AlertDialogCancel>
+              <form action={onDelete}>
+                <FormSubmit className="bg-red-600 w-[unset]" type="submit">
+                  Delete My Data
+                </FormSubmit>
+              </form>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+        <a
+          className={cn(buttonVariants(), "cursor-pointer")}
+          href="https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
+        >
+          Submit Survey
+        </a>
+      </div>
     </Main>
   );
 }

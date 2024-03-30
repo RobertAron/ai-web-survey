@@ -70,7 +70,7 @@ export function Form({
             label: `How much do you agree with the following: ${statement}`,
           },
           {
-            id: "group-2-1",
+            id: "group-2-2",
             label: `How much do you agree with the following: The AI was helpful in learning about the topic`,
           },
         ]}
