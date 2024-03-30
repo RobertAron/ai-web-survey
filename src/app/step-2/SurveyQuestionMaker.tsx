@@ -3,7 +3,7 @@ import { redirectCheck } from "@/redirectCheck";
 import { Form } from "./Form";
 import { getUserQuestion, topics } from "@/randomQuestions";
 
-export function SurveyQuestionMaker(
+export function PreSurveyQuestionMaker(
   currentStep: string,
   questionIndex: number
 ) {
@@ -13,7 +13,7 @@ export function SurveyQuestionMaker(
     return (
       <Main>
         <PageTitle
-          title="Post-Research Survey"
+          title="Pre-Research Survey"
           subtitle="Please answer the following questions to the best of your ability."
         />
         <Form

@@ -1,4 +1,4 @@
-import { SurveyQuestionMaker } from "./SurveyQuestionMaker";
+import { PreSurveyQuestionMaker } from "../step-2/SurveyQuestionMaker";
 
-const PAGE = SurveyQuestionMaker("step-5", 0);
+const PAGE = PreSurveyQuestionMaker("step-5", 1);
 export default PAGE;

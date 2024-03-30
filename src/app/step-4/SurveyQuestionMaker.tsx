@@ -3,7 +3,7 @@ import { redirectCheck } from "@/redirectCheck";
 import { Form } from "./Form";
 import { getUserQuestion, topics } from "@/randomQuestions";
 
-export function SurveyQuestionMaker(
+export function PostSurveyQuestionMaker(
   currentStep: string,
   questionIndex: number
 ) {

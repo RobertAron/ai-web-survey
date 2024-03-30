@@ -7,7 +7,7 @@ export default async function Component() {
   return (
     <Main>
       <PageTitle
-        title="Rate the AI"
+        title="Opinion of the AI Model"
         subtitle="Rate how the AI did in the previous questions"
       />
       <Form />

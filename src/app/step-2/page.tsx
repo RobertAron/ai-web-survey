@@ -1,16 +1,4 @@
-import { Main, PageTitle } from "@/CommonComponents";
-import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
+import { PreSurveyQuestionMaker } from "./SurveyQuestionMaker";
 
-export default async function Component() {
-  await redirectCheck();
-  return (
-    <Main>
-      <PageTitle
-        title="Rate Your Knowledge and opinion"
-        subtitle="Please rate your knowledge and opinion on the following topic."
-      />
-      <Form />
-    </Main>
-  );
-}
+const PAGE = PreSurveyQuestionMaker("step-2", 0);
+export default PAGE;

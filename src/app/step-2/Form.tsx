@@ -8,48 +8,54 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formTemplate = z.object({
-  knowledgeRating: z.record(z.string()),
-  agreeRating: z.record(z.string()),
+  knowledge: z.record(z.string()),
+  agree: z.record(z.string()),
 });
 
-export function Form() {
-  const { register, handleSubmit } = useForm<
-    z.infer<typeof formTemplate>
-  >({
+export function Form({
+  currentStep,
+  topic,
+  statement,
+}: {
+  currentStep: string;
+  topic: string;
+  statement: string;
+}) {
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),
   });
-
-  const router = useRouter();
-  const onSubmit: Parameters<typeof handleSubmit>[0] = (d) => {
-    return fetch("/step-2/api", { method: "POST", body: JSON.stringify(d) })
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
+    fetch(`/${currentStep}/api`, {
+      method: "POST",
+      body: JSON.stringify(d),
+    })
       .then((res) => res.json())
       .then((res) => router.push(res.nextPage));
-  };
-
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(execute)}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(execute)}>
       <OnAScale
         register={register}
-        sectionKey="knowledgeRating"
+        sectionKey="knowledge"
         responses={[
           "Never Heard of this",
           "No Knowledge",
           "Some Knowledge",
           "Very Knowledgeable",
         ]}
-        statements={
-          [
-            { id: "q-1", label: "Covenant Marriages" },
-            { id: "q-2", label: "Net Neutraility" },
-          ] as const
-        }
+        statements={[
+          {
+            id: "group-1-1",
+            label: `How knowledgeable are you on this topic: ${topic}?`,
+          },
+        ]}
       />
       <OnAScale
         register={register}
-        sectionKey="agreeRating"
+        sectionKey="agree"
         responses={[
           "Strongly Disagree",
           "Disagree",
@@ -60,13 +66,8 @@ export function Form() {
         ]}
         statements={[
           {
-            id: "q-3",
-            label:
-              "I believe all states in the United States should offer covenant marriages.",
-          },
-          {
-            id: "q-4",
-            label: "I believe that net neutrality is a good thing for society.",
+            id: "group-2-1",
+            label: `How much do you agree with the following: ${statement}`,
           },
         ]}
       />
