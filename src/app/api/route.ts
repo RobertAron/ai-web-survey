@@ -17,6 +17,7 @@ export async function POST(req: NextRequest, _res: NextResponse) {
       data: {
         current_page: nextPage,
         user_id: parsedData.userId,
+        selected_ai: Math.random() < 0.5 ? "Democrat" : "Republican",
         randomized_user_questions: {
           createMany: {
             data: [
@@ -33,7 +34,9 @@ export async function POST(req: NextRequest, _res: NextResponse) {
         },
       },
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log("error creating user", err);
+  }
   cookies().set("user-id", parsedData.userId, { secure: true });
   return Response.json({ nextPage });
 }

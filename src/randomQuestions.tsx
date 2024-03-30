@@ -89,3 +89,18 @@ export async function getUserQuestion(index: number) {
   if (result === null) throw new Error("Could not retrieve question");
   return result;
 }
+
+export async function getAiType() {
+  const userId = getUserId();
+  if (userId === null) throw new Error("Could not get user ID");
+  const res = await prismaClient.user_page_tracking.findUnique({
+    where: {
+      user_id: userId,
+    },
+    select: {
+      selected_ai: true,
+    },
+  });
+  if (res === null) throw new Error("Could not find user in DB");
+  return res.selected_ai;
+}

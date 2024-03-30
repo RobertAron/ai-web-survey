@@ -10,10 +10,16 @@ datasource db {
   url      = env("POSTGRES_URL_NON_POOLING")
 }
 
+enum AiModelType {
+  Republican
+  Democrat
+}
+
 model user_page_tracking {
   user_id                   String
   current_page              String
   randomized_user_questions randomized_user_questions[]
+  selected_ai               AiModelType                 @default(Republican)
 
   @@unique([user_id])
 }
