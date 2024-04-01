@@ -49,7 +49,7 @@ export function Form({
         statements={[
           {
             id: "group-1-1",
-            label: `How knowledgeable are you on this topic: ${topic}?`,
+            label: <span>How knowledgeable are you on this topic: <u>{topic}</u>?</span>,
           },
         ]}
       />
@@ -67,11 +67,11 @@ export function Form({
         statements={[
           {
             id: "group-2-1",
-            label: `How much do you agree with the following: ${statement}`,
+            label: <span>How much do you agree with the following: <u>{statement}</u></span>,
           },
           {
             id: "group-2-2",
-            label: `How much do you agree with the following: The AI was helpful in learning about the topic`,
+            label: <span>How much do you agree with the following: <u>The AI was helpful in learning about the topic.</u></span>,
           },
         ]}
       />

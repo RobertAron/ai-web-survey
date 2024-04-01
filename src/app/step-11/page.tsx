@@ -33,7 +33,7 @@ export default async function Home() {
       <PageTitle title="Debriefing Form for Participation in a Research Study University of Washington" />
       <p>
         Thank you for your participation in our study! Your participation is
-        grealy appreciated.
+        greatly appreciated!
       </p>
       <H3>Purpose of the Study</H3>
       <p>
@@ -66,7 +66,7 @@ export default async function Home() {
         Now that you know the true purpose of our study and are fully informed,
         you may decide that you do not want your data used in this research. If
         you would like your data removed from the study and permanently deleted,
-        please click “DO NOT INCLUDE MY DATA” down below. Note, that you will
+        please click “Delete Data” down below. Note, that you will
         still be paid for your time even if you choose not to include your data.
       </p>
       <p>
@@ -91,24 +91,29 @@ export default async function Home() {
       <p className="underline font-semibold">
         *** Once again, thank you for your participation in this study! ***
       </p>
-      <div className="flex gap-2 justify-between">
+      <div className="flex flex-col gap-2">
+      <a
+          className={cn(buttonVariants(), "cursor-pointer")}
+          href="https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
+        >
+          Submit Survey
+        </a>
         <AlertDialog>
           <AlertDialogTrigger className="underline text-gray-700/90">
-            Privacy
+            Delete Data
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Delete your submissions</AlertDialogTitle>
               <AlertDialogDescription>
-                Deleting your is a not a permanent action. Are you sure you want
-                to continue?
+                <b>Reminder: all information is private an completely anonymized.</b> Are you sure you want to continue?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex">
               <AlertDialogCancel className="grow" autoFocus>
                 Cancel
               </AlertDialogCancel>
-              <form action={onDelete}>
+              <form action={onDelete} onSubmit={() => window.location.href = "https://app.prolific.com/submissions/complete?cc=CSZBEP6O"}>
                 <FormSubmit className="bg-red-600 w-[unset]" type="submit">
                   Delete My Data
                 </FormSubmit>
@@ -116,12 +121,6 @@ export default async function Home() {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <a
-          className={cn(buttonVariants(), "cursor-pointer")}
-          href="https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
-        >
-          Submit Survey
-        </a>
       </div>
     </Main>
   );

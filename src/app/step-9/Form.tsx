@@ -39,7 +39,7 @@ export function Form() {
           {
             id: "group-1-1",
             label:
-              "How helpful was the AI model in assisting with the previous task?",
+              "How helpful was the AI model in advising you on your budget?",
           },
         ]}
       />

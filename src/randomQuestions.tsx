@@ -3,55 +3,18 @@ import { getUserId } from "./redirectCheck";
 
 export const topics = [
   {
-    topic: "The future of artificial intelligence in everyday life",
-    statement: "AI will revolutionize various aspects of daily living.",
+    topic: "Covenant Marriages",
+    statement: "I support all states in the United States offering covenant marriages.",
   },
   {
-    topic: "Sustainable fashion trends and their impact on the environment",
+    topic: "Lacey Act of 1900",
     statement:
-      "Fashion industry practices significantly contribute to environmental degradation.",
+      "I support the Lacey Act of 1900.",
   },
   {
-    topic: "Exploring the benefits and challenges of remote work culture",
+    topic: "Multifamily Zoning Laws",
     statement:
-      "Remote work improves work-life balance but poses challenges for collaboration.",
-  },
-  {
-    topic: "The psychology behind decision-making in consumer behavior",
-    statement:
-      "Consumer decisions are influenced by subconscious psychological factors.",
-  },
-  {
-    topic: "The rise of plant-based diets and their effects on personal health",
-    statement:
-      "Adopting a plant-based diet can lead to improved health outcomes.",
-  },
-  {
-    topic:
-      "Urban gardening initiatives and their role in fostering community resilience",
-    statement:
-      "Urban gardening strengthens community bonds and enhances food security.",
-  },
-  {
-    topic: "The evolution of digital storytelling in interactive media",
-    statement:
-      "Interactive storytelling platforms redefine audience engagement in media consumption.",
-  },
-  {
-    topic: "Innovative approaches to renewable energy technology",
-    statement:
-      "Renewable energy technologies are essential for combating climate change.",
-  },
-  {
-    topic:
-      "Cultural appropriation versus cultural appreciation in the fashion industry",
-    statement:
-      "The fashion industry often blurs the line between cultural appropriation and cultural appreciation.",
-  },
-  {
-    topic: "The influence of social media on mental health and well-being",
-    statement:
-      "Excessive social media usage negatively impacts mental health and well-being.",
+      "I support multifamily zoning laws.",
   },
 ];
 

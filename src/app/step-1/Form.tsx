@@ -375,7 +375,7 @@ export function Form() {
         <Label htmlFor="partisan">Partisan</Label>
         <SubLabel>
           Generally speaking, do you usually think of yourself as a Democrat, a
-          Republican, an independent, or what?
+          Republican, an independent, or something else?
         </SubLabel>
         <Select
           {...restPartisanRegister}

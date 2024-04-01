@@ -12,10 +12,9 @@ const formTemplate = z.object({
     .array(),
   percentages: z.object({
     education: z.number(),
-    health: z.number(),
-    infrastructure: z.number(),
-    publicSafety: z.number(),
-    environment: z.number(),
+    safety: z.number(),
+    welfare: z.number(),
+    veterans: z.number(),
   }),
 });
 

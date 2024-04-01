@@ -9,10 +9,9 @@ export default async function Component() {
       <PageTitle title="Mayor Simulation - Budget Allocation" />
       <div className="w-full flex-grow bg-white p-6 flex flex-col border rounded gap-2">
         <p>
-          Pretend you are the mayor of a city and need to allocate funding to
-          five city branches. You need to decide what percentage of the budget
-          should go to each of the following branches: Law Enforcement,
-          Education, Homelessness, Health Care, and Immigration.
+          Pretend you are the mayor of a city and need to allocate left-over funding to
+          up to four city branches. You need to decide what percentage of the budget
+          should go to each of the following branches:<i> <u>Public Safety, K-12th Education, Welfare Assistance, and Veteran Services.</u></i>
         </p>
         <p>
           In order to help make your decision, you will get feedback on your

@@ -43,11 +43,11 @@ export function Form() {
           {
             id: "group-1-1",
             label:
-              "Overall, do you feel like the AI models could aid humans in researching opinions?",
+              "Overall, do you feel like the AI models you interacted with could aid humans in researching topics?",
           },
           {
             id: "group-1-2",
-            label: "Do you feel like the model was bias in any way?",
+            label: "Do you feel like the AI models you interacted with was bias in any way?",
           },
         ]}
       />
@@ -59,12 +59,12 @@ export function Form() {
           {
             id: "group-2-1",
             label:
-              "Was there any comments the AI model made that you did not agree with?",
+              "Was there any comments the AI models you interacted with made that you did not agree with?",
           },
           {
             id: "group-2-2",
             label:
-              "Was there any information the AI model presented that you thought was incorrect?",
+              "Was there any information the AI models you interacted with presented that you thought was incorrect?",
           },
         ]}
       />

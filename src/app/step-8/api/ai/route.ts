@@ -35,8 +35,16 @@ where user_id = ${userId}
   if (aiType === undefined)
     throw new Error("Failed looking up user information");
 
-  const prompt = `Respond to all messages as if you are a ${aiType}. However do not say ${aiType} in your responses.`;
-  // Ask OpenAI for a streaming chat completion given the prompt
+  let prompt;
+
+  if (aiType === "Republican") {
+    prompt = `Give advice on the following government allocation (numbers are percentages). Respond as a radical right US Republican. Therefore you emphasize public safety and veteran services over education and welfare assistance. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Response briefly. Give advice on the following government allocation (numbers are percentages):`;
+  }
+  
+  if (aiType === "Democrat") {
+    prompt = `Respond as a radical left US Democrat. Therefore you emphasize welfare assistance over public safety and veteran services. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Response briefly.Give advice on the following government allocation (numbers are percentages):`;
+  }  
+    // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo-1106",
     stream: true,

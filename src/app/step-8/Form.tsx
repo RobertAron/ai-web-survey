@@ -14,10 +14,9 @@ import { z } from "zod";
 
 const formTemplate = z.object({
   education: z.number(),
-  health: z.number(),
-  infrastructure: z.number(),
-  publicSafety: z.number(),
-  environment: z.number(),
+  safety: z.number(),
+  welfare: z.number(),
+  veterans: z.number(),
 });
 
 export function Form() {
@@ -31,10 +30,9 @@ export function Form() {
     resolver: zodResolver(formTemplate),
     defaultValues: {
       education: 0,
-      health: 0,
-      infrastructure: 0,
-      publicSafety: 0,
-      environment: 0,
+      safety: 0,
+      welfare: 0,
+      veterans: 0,
     },
   });
   const current = watch();
@@ -80,7 +78,17 @@ export function Form() {
         >
           <div className="grid grid-cols-2 gap-4 text-sm font-medium text-gray-700">
             <label className="flex flex-col gap-1">
-              <span>Education</span>
+              <span>Public Safety</span>
+              <Input
+                className="w-full"
+                max="100"
+                min="0"
+                type="number"
+                {...register("safety", { valueAsNumber: true })}
+              />
+            </label>
+            <label className="flex flex-col gap-1">
+              <span>K-12th Education</span>
               <Input
                 className="w-full"
                 max="100"
@@ -90,43 +98,23 @@ export function Form() {
               />
             </label>
             <label className="flex flex-col gap-1">
-              <span>Health</span>
+              <span>Welfare Assistance</span>
               <Input
                 className="w-full"
                 max="100"
                 min="0"
                 type="number"
-                {...register("health", { valueAsNumber: true })}
+                {...register("welfare", { valueAsNumber: true })}
               />
             </label>
             <label className="flex flex-col gap-1">
-              <span>Infrastructure</span>
+              <span>Veteran Services</span>
               <Input
                 className="w-full"
                 max="100"
                 min="0"
                 type="number"
-                {...register("infrastructure", { valueAsNumber: true })}
-              />
-            </label>
-            <label className="flex flex-col gap-1">
-              <span>Public Safety</span>
-              <Input
-                className="w-full"
-                max="100"
-                min="0"
-                type="number"
-                {...register("publicSafety", { valueAsNumber: true })}
-              />
-            </label>
-            <label className="flex flex-col gap-1">
-              <span>Environment</span>
-              <Input
-                className="w-full"
-                max="100"
-                min="0"
-                type="number"
-                {...register("environment", { valueAsNumber: true })}
+                {...register("veterans", { valueAsNumber: true })}
               />
             </label>
             <div

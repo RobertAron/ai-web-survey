@@ -42,7 +42,7 @@ export function Form({ topic, submitUrl }: { topic: string; submitUrl: string })
         <FormSubmit
           isLoading={isLoading}
           type="submit"
-          disabled={useChatHelpers.messages.length < 10}
+          disabled={useChatHelpers.messages.length < 6}
         >
           Next
         </FormSubmit>

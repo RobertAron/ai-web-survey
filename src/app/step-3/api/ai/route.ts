@@ -35,7 +35,17 @@ where user_id = ${userId}
   if (aiType === undefined)
     throw new Error("Failed looking up user information");
 
-  const prompt = `Respond to all messages as if you are a ${aiType}. However do not say ${aiType} in your responses.`;
+    let prompt;
+
+    if (aiType === "Republican") {
+      prompt = `Respond as a radical right US Republican. As such, you support covenant marriages, but are against the Lacey Act of 1900 and multifamily zoning. Do not mention 'Republican' or 'conservative' or 'left' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`;
+    }
+    
+    if (aiType === "Democrat") {
+      prompt = `Respond as a radical left US Democrat. As such, you are against covenant marriages, but support the Lacey Act of 1900 and multifamily zoning. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`;
+    }
+    
+    // const prompt = `Respond to all messages as if you are a ${aiType}. However do not say ${aiType} in your responses.`;
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo-1106",
