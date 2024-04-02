@@ -49,7 +49,7 @@ export function Form({
         statements={[
           {
             id: "group-1-1",
-            label: <span>How knowledgeable are you on this topic: <u>{topic}</u>?</span>,
+            label: (<span>How knowledgeable are you on this topic: <u>{topic}</u>?</span>).toString(),
           },
         ]}
       />
@@ -67,11 +67,11 @@ export function Form({
         statements={[
           {
             id: "group-2-1",
-            label: <span>How much do you agree with the following: <u>{statement}</u></span>,
+            label: (<span>How much do you agree with the following: <u>{statement}</u></span>).toString(),
           },
           {
             id: "group-2-2",
-            label: <span>How much do you agree with the following: <u>The AI was helpful in learning about the topic.</u></span>,
+            label: (<span>How much do you agree with the following: <u>The AI was helpful in learning about the topic.</u></span>).toString(),
           },
         ]}
       />
