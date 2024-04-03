@@ -39,8 +39,8 @@ export default async function Home() {
       <p>
         Aspects of the the study were purposely excluded from the consent form, including the aim of the study, to prevent bias in the results.  
         Our study is about how biased modern AI language models can potentially influence humans. In
-        Tasks 1 and 2, we instructed the models to generate text 
-        leaning towards the views of either a United States Republican or a United States Democrat.
+        Tasks 1 and 2, we instructed the models to generate text either
+        leaning towards the views of either a United States Republican, a United States Democrat, or neutral.
         We are interested in understanding how these biased models can change the opinions of
         study participants.
       </p>
@@ -49,7 +49,7 @@ export default async function Home() {
         with all these details prior to your participation. This ensures that
         your reactions in this study were spontaneous and not influenced by
         prior knowledge about the purpose of the study. We again note that the
-        models from Task 1 and Task 2 were altered to generate bias (and
+        models from Task 1 and Task 2 might have bee  altered to generate bias (and
         potentially false) information. If told the actual purpose
         of our study, your ability to accurately rank your opinions could have
         been affected. We regret the deception, but we hope you understand the
