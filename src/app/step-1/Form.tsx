@@ -293,7 +293,7 @@ export function Form() {
             <SelectItem value="some_college">
               Some college, no degree
             </SelectItem>
-            <SelectItem value="associate">Associate degree</SelectItem>
+            <SelectItem value="associate">Associate's degree</SelectItem>
             <SelectItem value="bachelor">Bachelor’s degree</SelectItem>
             <SelectItem value="master">Master’s degree</SelectItem>
             <SelectItem value="doctorate">
@@ -363,7 +363,7 @@ export function Form() {
           <SelectContent position="popper">
             <SelectItem value="very_liberal">Very Liberal</SelectItem>
             <SelectItem value="somewhat_liberal">Somewhat Liberal</SelectItem>
-            <SelectItem value="middle">Middle of the road</SelectItem>
+            <SelectItem value="middle">Middle of the Road</SelectItem>
             <SelectItem value="somewhat_conservative">
               Somewhat Conservative
             </SelectItem>
@@ -375,7 +375,7 @@ export function Form() {
         <Label htmlFor="partisan">Partisan</Label>
         <SubLabel>
           Generally speaking, do you usually think of yourself as a Democrat, a
-          Republican, an independent, or something else?
+          Republican, an Independent, or something else?
         </SubLabel>
         <Select
           {...restPartisanRegister}

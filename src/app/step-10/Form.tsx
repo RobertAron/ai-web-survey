@@ -34,10 +34,10 @@ export function Form() {
         register={register}
         sectionKey="agree"
         responses={[
-          "Definietly No",
+          "Definitely No",
           "Likely No",
           "Likely Yes",
-          "Definietly Yes",
+          "Definitely Yes",
         ]}
         statements={[
           {
@@ -47,7 +47,7 @@ export function Form() {
           },
           {
             id: "group-1-2",
-            label: "Do you feel like the AI models you interacted with was bias in any way?",
+            label: "Do you feel like the AI models you interacted with were biased in any way?",
           },
         ]}
       />
@@ -59,12 +59,12 @@ export function Form() {
           {
             id: "group-2-1",
             label:
-              "Was there any comments the AI models you interacted with made that you did not agree with?",
+              "How many of the comments made by the AI models did you disagree with?",
           },
           {
             id: "group-2-2",
             label:
-              "Was there any information the AI models you interacted with presented that you thought was incorrect?",
+              "How many of the comments made by the AI models did you think were incorrect?",
           },
         ]}
       />

@@ -30,20 +30,19 @@ export default async function Home() {
   }
   return (
     <Main>
-      <PageTitle title="Debriefing Form for Participation in a Research Study University of Washington" />
+      <PageTitle title="Debriefing Form for Participation in a Research Study at the University of Washington" />
       <p>
         Thank you for your participation in our study! Your participation is
         greatly appreciated!
       </p>
       <H3>Purpose of the Study</H3>
       <p>
-        Earlier in our consent form we did not tell you the aim of our study but
-        that we would be using deception as part of our experiment. Our study is
-        about how biased modern AI models can potentially influence humans. In
-        Task 1 and 2, we instructed the models to generate text which was either
-        leaning toward a United States Republican or a United States Democrat.
-        We were interested in how these bias models could change the opinions of
-        the participants.
+        Aspects of the the study were purposely excluded from the consent form, including the aim of the study, to prevent bias in the results.  
+        Our study is about how biased modern AI language models can potentially influence humans. In
+        Tasks 1 and 2, we instructed the models to generate text 
+        leaning towards the views of either a United States Republican or a United States Democrat.
+        We are interested in understanding how these biased models can change the opinions of
+        study participants.
       </p>
       <p>
         Unfortunately, to properly test our hypothesis, we could not provide you
@@ -51,7 +50,7 @@ export default async function Home() {
         your reactions in this study were spontaneous and not influenced by
         prior knowledge about the purpose of the study. We again note that the
         models from Task 1 and Task 2 were altered to generate bias (and
-        potentially false) information. If we had told you the actual purposes
+        potentially false) information. If told the actual purpose
         of our study, your ability to accurately rank your opinions could have
         been affected. We regret the deception, but we hope you understand the
         reason for it.
@@ -59,7 +58,7 @@ export default async function Home() {
       <H3>Confidentiality</H3>
       <p>
         Please note that although the purpose of this study was not revealed
-        until now, everything on the consent form is correct. This includes the
+        until now, everything shared on the consent form is correct. This includes the
         ways in which we will keep your data confidential.
       </p>
       <p>
@@ -71,14 +70,14 @@ export default async function Home() {
       </p>
       <p>
         Please do not disclose research procedures and/or hypotheses to anyone
-        who might participate in this study in the future as this could affect
+        who may participate in this study in the future as this could affect
         the results of the study.
       </p>
       <H3>Useful Contact Information</H3>
       <p>
         If you have any questions or concerns regarding this study, its purpose,
         or procedures, or if you have a research-related problem, please feel
-        free to contact the researcher(s), Jillian Fisher (jrfish@uw.edu). If
+        free to contact the researcher, Jillian Fisher (jrfish@uw.edu). If
         you have any questions concerning your rights as a research subject, you
         may contact the University of Washington Human Subject Division (HSD) at
         (206) 543 – 0098 or hsdinfo@uw.edu.
@@ -113,7 +112,7 @@ export default async function Home() {
               <AlertDialogCancel className="grow" autoFocus>
                 Cancel
               </AlertDialogCancel>
-              <form action={onDelete} onSubmit={() => window.location.href = "https://app.prolific.com/submissions/complete?cc=CSZBEP6O"}>
+              <form action={onDelete}>
                 <FormSubmit className="bg-red-600 w-[unset]" type="submit">
                   Delete My Data
                 </FormSubmit>

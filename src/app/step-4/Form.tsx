@@ -71,7 +71,7 @@ export function Form({
           },
           {
             id: "group-2-2",
-            label: (<span>How much do you agree with the following: <u>The AI was helpful in learning about the topic.</u></span>).toString(),
+            label: 'How much do you agree with the following: The AI was helpful in learning about the topic.',
           },
         ]}
       />

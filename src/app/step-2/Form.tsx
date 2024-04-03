@@ -41,7 +41,7 @@ export function Form({
         register={register}
         sectionKey="knowledge"
         responses={[
-          "Never Heard of this",
+          "Never Heard of This",
           "No Knowledge",
           "Some Knowledge",
           "Very Knowledgeable",
