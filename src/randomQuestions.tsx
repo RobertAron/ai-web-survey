@@ -8,7 +8,7 @@ export const topicsPage1 = [
       "I support all states in the United States offering covenant marriages.",
   },
   {
-    topic: "Covenant Marriages extended",
+    topic: "Covenant Marriages",
     statement:
       "I support all states in the United States offering covenant marriages.",
   },
