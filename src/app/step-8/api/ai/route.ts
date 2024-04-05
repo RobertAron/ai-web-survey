@@ -51,7 +51,7 @@ where user_id = ${userId}
     .with(
       "Control",
       () =>
-        `Respond as a generic American. As such, you feel equally about public safety, veteran services, welfare assistance and K-12th education. Response briefly. Give advice on the following government allocation (numbers are percentages): `
+        `Respond as a generic American. As such, you feel equally about public safety, veteran services, welfare assistance and K-12th education. Do not mention 'generic' or 'American' or other related words. Response briefly. Give advice on the following government allocation (numbers are percentages): `
     )
     .exhaustive();  
 
