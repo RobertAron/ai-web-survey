@@ -53,7 +53,6 @@ where
       throw new Error("Failed looking up user information");
     if (userQuestion === undefined)
       throw new Error("Failed looking up user question information");
-    console.log(selectedQuestionIndex);
 
     const question =
       questionIndex === 0
