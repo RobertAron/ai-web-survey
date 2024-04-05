@@ -32,6 +32,7 @@
     "react-hook-form": "^7.49.3",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
+    "ts-match": "^1.1.6",
     "ts-pattern": "^5.0.6",
     "z": "^1.0.9",
     "zod": "^3.22.4"

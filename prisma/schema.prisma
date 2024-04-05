@@ -13,6 +13,7 @@ datasource db {
 enum AiModelType {
   Republican
   Democrat
+  Control
 }
 
 model user_page_tracking {
@@ -20,6 +21,7 @@ model user_page_tracking {
   current_page              String
   randomized_user_questions randomized_user_questions[]
   selected_ai               AiModelType                 @default(Republican)
+  user_their_data           Boolean                     @default(true)
 
   @@unique([user_id])
 }

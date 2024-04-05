@@ -24,9 +24,8 @@ export default async function Home() {
   await redirectCheck();
   async function onDelete(_formData: FormData) {
     "use server";
-    console.log("on server?");
     await deleteUserData();
-    redirect(`/`);
+    redirect(`https://app.prolific.com/submissions/complete?cc=CSZBEP6O`);
   }
   return (
     <Main>

@@ -2,31 +2,40 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prismaClient } from "@/database";
-import { pickRandomQuestionIndexes } from "@/randomQuestions";
+
 const formValidate = z.object({
   userId: z.string(),
 });
 
+function pickRandomItem<T>(arr: readonly T[]) {
+  // Generate a random index between 0 (inclusive) and the length of the array (exclusive)
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  // Return the item at the randomly chosen index
+  return arr[randomIndex];
+}
+
+const options = ["Democrat", "Republican", "Control"] as const;
+
 export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
-  const questionIndexes = pickRandomQuestionIndexes();
   const nextPage = "/step-1";
+  const selected_ai = pickRandomItem(options);
   try {
     await prismaClient.user_page_tracking.create({
       data: {
         current_page: nextPage,
         user_id: parsedData.userId,
-        selected_ai: Math.random() < 0.5 ? "Democrat" : "Republican",
+        selected_ai,
         randomized_user_questions: {
           createMany: {
             data: [
               {
-                question: questionIndexes[0],
+                question: Math.floor(Math.random() * 2),
                 question_index: 0,
               },
               {
-                question: questionIndexes[1],
+                question: Math.floor(Math.random() * 2),
                 question_index: 1,
               },
             ],

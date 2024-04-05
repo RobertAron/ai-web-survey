@@ -189,10 +189,7 @@ export function Form() {
       </div>
       <div className="space-y-1 flex flex-col">
         <Label htmlFor="hispanic">Ethnicity</Label>
-        <SubLabel>
-          Are you of Spanish,
-          Hispanic, or Latino descent?
-        </SubLabel>
+        <SubLabel>Are you of Spanish, Hispanic, or Latino descent?</SubLabel>
         <Select
           {...restHispanicRegister}
           onValueChange={(val) =>
@@ -225,10 +222,10 @@ export function Form() {
       <div className="space-y-1 flex flex-col">
         <Label htmlFor="race">Race</Label>
         <SubLabel>
-          Please indicate what you consider your racial background to be. The categories we use may not fully
-          describe you, but they do match those used by the Census Bureau. It
-          helps us to know how similar the group of participants is to the U.S.
-          population.
+          Please indicate what you consider your racial background to be. The
+          categories we use may not fully describe you, but they do match those
+          used by the Census Bureau. It helps us to know how similar the group
+          of participants is to the U.S. population.
         </SubLabel>
         <Select
           {...restRaceRegister}
@@ -293,9 +290,9 @@ export function Form() {
             <SelectItem value="some_college">
               Some college, no degree
             </SelectItem>
-            <SelectItem value="associate">Associate's degree</SelectItem>
-            <SelectItem value="bachelor">Bachelor’s degree</SelectItem>
-            <SelectItem value="master">Master’s degree</SelectItem>
+            <SelectItem value="associate">{"Associate's degree"}</SelectItem>
+            <SelectItem value="bachelor">{"Bachelor's degree"}</SelectItem>
+            <SelectItem value="master">{"Master's degree"}</SelectItem>
             <SelectItem value="doctorate">
               Professional or Doctorate degree
             </SelectItem>

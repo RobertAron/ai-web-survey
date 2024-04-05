@@ -11,9 +11,17 @@ import { z } from "zod";
 
 const formTemplate = z.object({});
 
-export function Form({ topic, submitUrl }: { topic: string; submitUrl: string }) {
+export function Form({
+  topic,
+  submitUrl,
+  aiStep,
+}: {
+  topic: string;
+  submitUrl: string;
+  aiStep: number;
+}) {
   const useChatHelpers = useChat({
-    api: "/step-3/api/ai",
+    api: `/step-${aiStep}/api/ai`,
   });
   const { handleSubmit } = useForm<z.infer<typeof formTemplate>>({
     resolver: zodResolver(formTemplate),

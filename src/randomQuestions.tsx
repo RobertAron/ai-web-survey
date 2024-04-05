@@ -1,20 +1,26 @@
 import { prismaClient } from "./database";
 import { getUserId } from "./redirectCheck";
 
-export const topics = [
+export const topicsPage1 = [
   {
     topic: "Covenant Marriages",
-    statement: "I support all states in the United States offering covenant marriages.",
+    statement:
+      "I support all states in the United States offering covenant marriages.",
   },
   {
-    topic: "Lacey Act of 1900",
+    topic: "Covenant Marriages extended",
     statement:
-      "I support the Lacey Act of 1900.",
+      "I support all states in the United States offering covenant marriages.",
+  },
+];
+export const topicsPage2 = [
+  {
+    topic: "Lacey Act of 1900",
+    statement: "I support the Lacey Act of 1900.",
   },
   {
     topic: "Multifamily Zoning Laws",
-    statement:
-      "I support multifamily zoning laws.",
+    statement: "I support multifamily zoning laws.",
   },
 ];
 
@@ -35,7 +41,7 @@ function getRandomIntegers(x: number, y: number): [number, number] {
 }
 
 export function pickRandomQuestionIndexes() {
-  return getRandomIntegers(0, topics.length - 1);
+  return getRandomIntegers(0, topicsPage1.length - 1);
 }
 
 export async function getUserQuestion(index: number) {

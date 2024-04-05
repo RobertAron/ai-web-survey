@@ -43,15 +43,21 @@ export function Form() {
   const remaining =
     100 - Object.values(current).reduce((acc, next) => next + acc);
   const onEvaluate: Parameters<typeof handleSubmit>[0] = async (d) => {
+    if (remaining !== 0) {
+      console.log("remaining must be 0");
+      return;
+    }
     setLastEvaluate(d);
-    if (remaining !== 0) throw new Error("remaining must be 0");
     useChatHelpers.append({
       role: "user",
       content: JSON.stringify(d),
     });
   };
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) => {
-    if (remaining !== 0) throw new Error("remaining must be 0");
+    if (remaining !== 0) {
+      console.log("remaining must be 0");
+      return;
+    }
     fetch("/step-8/api", {
       method: "POST",
       body: JSON.stringify({

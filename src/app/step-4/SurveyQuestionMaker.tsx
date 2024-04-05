@@ -1,7 +1,7 @@
 import { Main, PageTitle } from "@/CommonComponents";
 import { redirectCheck } from "@/redirectCheck";
 import { Form } from "./Form";
-import { getUserQuestion, topics } from "@/randomQuestions";
+import { getUserQuestion, topicsPage1 } from "@/randomQuestions";
 
 export function PostSurveyQuestionMaker(
   currentStep: string,
@@ -18,8 +18,8 @@ export function PostSurveyQuestionMaker(
         />
         <Form
           currentStep={currentStep}
-          topic={topics[res.question].topic}
-          statement={topics[res.question].statement}
+          topic={topicsPage1[res.question].topic}
+          statement={topicsPage1[res.question].statement}
         />
       </Main>
     );
