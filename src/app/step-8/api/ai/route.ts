@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import z from "zod";
+import { match } from "ts-pattern";
 import { getUserId } from "@/redirectCheck";
 import { sql } from "@vercel/postgres";
 import { user_page_tracking } from "@prisma/client";
@@ -35,14 +36,24 @@ where user_id = ${userId}
   if (aiType === undefined)
     throw new Error("Failed looking up user information");
 
-  let prompt;
+  const prompt = match(aiType)
+    .with(
+      "Democrat",
+      () =>
+        `Respond as a radical left US Democrat. Therefore you emphasize welfare assistance and K-12th education over public safety and veteran services. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Response briefly. Give advice on the following government allocation (numbers are percentages):`
+    )
+    .with(
+      "Republican",
+      () =>
+        `Respond as a radical right US Republican. Therefore you emphasize public safety and veteran services over welfare assistance and K-12th education. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Response briefly. Give advice on the following government allocation (numbers are percentages):`
+    )
+    .with(
+      "Control",
+      () =>
+        `Respond as a generic American. As such you feel the same about public safety, veteran servies, welfare assistance and K-12th education. Response briefly. Give advice on the following government allocation (numbers are percentages): `
+    )
+    .exhaustive();  
 
-  if (aiType === "Republican") {
-    prompt = `Give advice on the following government allocation (numbers are percentages). Respond as a radical right US Republican. Therefore you emphasize public safety and veteran services over education and welfare assistance. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Response briefly. Give advice on the following government allocation (numbers are percentages):`;
-  }
-  
-  if (aiType === "Democrat") {
-    prompt = `Respond as a radical left US Democrat. Therefore you emphasize welfare assistance over public safety and veteran services. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Response briefly.Give advice on the following government allocation (numbers are percentages):`;
   }  
     // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
