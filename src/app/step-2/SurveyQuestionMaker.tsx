@@ -1,7 +1,7 @@
 import { Main, PageTitle } from "@/CommonComponents";
 import { redirectCheck } from "@/redirectCheck";
 import { Form } from "./Form";
-import { getUserQuestion, topicsPage1 } from "@/randomQuestions";
+import { getUserQuestion, topicsPage1, topicsPage2 } from "@/randomQuestions";
 
 export function PreSurveyQuestionMaker(
   currentStep: string,
@@ -10,6 +10,8 @@ export function PreSurveyQuestionMaker(
   return async function Page() {
     await redirectCheck();
     const res = await getUserQuestion(questionIndex);
+    const topic = questionIndex === 0 ? topicsPage1 : topicsPage2;
+
     return (
       <Main>
         <PageTitle
@@ -18,8 +20,8 @@ export function PreSurveyQuestionMaker(
         />
         <Form
           currentStep={currentStep}
-          topic={topicsPage1[res.question].topic}
-          statement={topicsPage1[res.question].statement}
+          topic={topic[res.question].topic}
+          statement={topic[res.question].statement}
         />
       </Main>
     );
