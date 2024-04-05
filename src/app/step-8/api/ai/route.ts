@@ -1,10 +1,11 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import z from "zod";
-import { match } from "ts-pattern";
 import { getUserId } from "@/redirectCheck";
 import { sql } from "@vercel/postgres";
 import { user_page_tracking } from "@prisma/client";
+import { match } from "ts-pattern";
+
 // Create an OpenAI API client (that's edge friendly!)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
   const { rows } = await sql<Pick<user_page_tracking, "selected_ai">>`
 select selected_ai
 from user_page_tracking
-where user_id = ${userId}
+where user_id = ${userId}   
 `;
   const aiType = rows[0]?.selected_ai;
   if (aiType === undefined)
@@ -54,7 +55,7 @@ where user_id = ${userId}
     )
     .exhaustive();  
 
-  }  
+ 
     // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo-1106",
