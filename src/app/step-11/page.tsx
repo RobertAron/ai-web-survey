@@ -48,7 +48,7 @@ export default async function Home() {
         with all these details prior to your participation. This ensures that
         your reactions in this study were spontaneous and not influenced by
         prior knowledge about the purpose of the study. We again note that the
-        models from Task 1 and Task 2 might have bee  altered to generate bias (and
+        models from Task 1 and Task 2 might have been  altered to generate bias (and
         potentially false) information. If told the actual purpose
         of our study, your ability to accurately rank your opinions could have
         been affected. We regret the deception, but we hope you understand the
@@ -104,7 +104,7 @@ export default async function Home() {
             <AlertDialogHeader>
               <AlertDialogTitle>Delete your submissions</AlertDialogTitle>
               <AlertDialogDescription>
-                <b>Reminder: all information is private an completely anonymized.</b> Are you sure you want to continue?
+                <b>Reminder: all information is private and completely anonymized.</b> Are you sure you want to continue?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex">
