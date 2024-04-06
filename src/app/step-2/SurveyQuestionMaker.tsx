@@ -11,7 +11,6 @@ export function PreSurveyQuestionMaker(
     await redirectCheck();
     const res = await getUserQuestion(questionIndex);
     const topic = questionIndex === 0 ? topicsPage1 : topicsPage2;
-
     return (
       <Main>
         <PageTitle
