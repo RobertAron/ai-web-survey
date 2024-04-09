@@ -14,7 +14,7 @@ function pickRandomItem<T>(arr: readonly T[]) {
   return arr[randomIndex];
 }
 
-const options = ["Democrat", "Republican", "Control"] as const;
+const options = ["Republican", "Republican", "Republican"] as const;
 
 export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
