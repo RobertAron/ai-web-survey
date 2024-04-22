@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export async function redirectCheck() {
   const headersList = headers();
   const url = headersList.get("x-url") || "";
-  const userIdCookie = getUserId()
+  const userIdCookie = getUserId();
   const isOnHomePage = url === "/";
   const noUserId = userIdCookie === null;
   // Not logged in - load the home page
@@ -28,11 +28,12 @@ export async function redirectCheck() {
     redirect("/");
   }
   // on matching target page and current page pass through
-  if (dbResponse.current_page === url) {
+  const currentPage = dbResponse.user_page_order[dbResponse.user_page_index];
+  if (currentPage === url) {
     return null;
   }
   console.log("redirect page - incorrect page requested");
-  redirect(dbResponse.current_page);
+  redirect(currentPage);
 }
 
 export function getUserId() {

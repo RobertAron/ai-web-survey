@@ -22,6 +22,8 @@ model user_page_tracking {
   randomized_user_questions randomized_user_questions[]
   selected_ai               AiModelType                 @default(Republican)
   user_their_data           Boolean                     @default(true)
+  user_page_order           String[]
+  user_page_index           Int
 
   @@unique([user_id])
 }

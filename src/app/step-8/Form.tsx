@@ -142,7 +142,7 @@ export function Form() {
         <FormSubmit
           type="submit"
           isLoading={isLoading}
-          disabled={!canSubmit}
+          disabled={!canSubmit || useChatHelpers.isLoading}
           className="bg-red-600"
         >
           Submit FINAL ALLOCATION

@@ -1,4 +1,5 @@
 import { prismaClient } from "@/database";
+import { incrementUserPage } from "@/incrementUserPage";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -12,12 +13,12 @@ const formTemplate = z.object({
     .array(),
 });
 
-export function PostGenerator(currentStep: string, nextPage: string) {
+export function PostGenerator(currentStep: string) {
   return async function POST(req: NextRequest, _res: NextResponse) {
     const data = await req.json();
     const parsedData = formTemplate.parse(data);
     const userId = cookies().get("user-id");
-    await prismaClient.$transaction([
+    const [_, nextPageResults] = await prismaClient.$transaction([
       prismaClient.conversation.create({
         data: {
           conversation: parsedData.messages,
@@ -25,15 +26,10 @@ export function PostGenerator(currentStep: string, nextPage: string) {
           user_id: userId?.value ?? "",
         },
       }),
-      prismaClient.user_page_tracking.update({
-        where: {
-          user_id: userId?.value,
-        },
-        data: {
-          current_page: nextPage,
-        },
-      }),
+      incrementUserPage(userId!.value),
     ]);
+    const nextPage =
+      nextPageResults.user_page_order[nextPageResults.user_page_index];
     return Response.json({ nextPage });
   };
 }
