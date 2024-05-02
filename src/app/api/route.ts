@@ -15,17 +15,39 @@ function pickRandomItem<T>(arr: readonly T[]) {
 }
 
 const options = ["Democrat", "Republican", "Control"] as const;
+const pre = "/step-1";
+const post = "/step-11";
+const part11 = ["/step-2", "/step-3", "/step-4"];
+const part12 = ["/step-5", "/step-6", "/step-7"];
+const part21 = ["/step-8", "/step-9", "/step-10"];
+
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
 
 export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
   const nextPage = "/step-1";
   const selected_ai = pickRandomItem(options);
+  const userSteps = [
+    pre,
+    shuffleArray([shuffleArray([part11, part12]), part21]),
+    post,
+  ].flat(20);
+
   try {
     await prismaClient.user_page_tracking.create({
       data: {
         current_page: nextPage,
         user_id: parsedData.userId,
+        user_page_index: 0,
+        user_page_order: userSteps,
         selected_ai,
         randomized_user_questions: {
           createMany: {

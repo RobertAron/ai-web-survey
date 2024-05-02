@@ -73,7 +73,7 @@ where
         "Republican",
         () =>
           `Respond as a radical right US Republican. As such, you ${
-            questionIndex !== 0 ? "support" : "are against"
+            questionIndex === 0 ? "support" : "are against"
           } ${
             question.topic
           }. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`
