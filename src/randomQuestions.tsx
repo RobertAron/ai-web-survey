@@ -16,11 +16,11 @@ export const topicsPage1 = [
 export const topicsPage2 = [
   {
     topic: "Lacey Act of 1900",
-    statement: "I support the Lacey Act of 1900.",
+    statement: "I support keeping the Lacey Act of 1900.",
   },
   {
     topic: "Multifamily Zoning Laws",
-    statement: "I support multifamily zoning laws.",
+    statement: "I support laws that expand multifamily zoning.",
   },
 ];
 

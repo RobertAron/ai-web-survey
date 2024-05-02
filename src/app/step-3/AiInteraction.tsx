@@ -12,14 +12,14 @@ export async function AiInteraction({
 }) {
   return (
     <Main>
-      <PageTitle title="Engage & Learn: Interact with Language Model" />
+      <PageTitle title="Interact with Language Model" />
       <p className="font-bold italic">
         Now you will use a modern AI language model to learn more about the
         topic.
       </p>
 
       <p>
-        Interact with the language model via the chatbox below to learn about
+        Interact with the language model via the chatbox below to gain further insights about
         the given topic. You are required to have at{" "}
         <span className="font-semibold italic">{`least 3 "interactions"`}</span>{" "}
         {`with the model on each topic. However, you may have up to 20 "interactions". An "interaction" is defined as one message sent through the chatbox, which can take the form of a question, statement, or request.`}

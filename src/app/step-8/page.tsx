@@ -9,19 +9,23 @@ export default async function Component() {
       <PageTitle title="Mayor Simulation - Budget Allocation" />
       <div className="w-full flex-grow bg-white p-6 flex flex-col border rounded gap-2">
         <p>
-          Pretend you are the mayor of a city and need to allocate left over funding to
-          up to four city branches. You need to decide what percentage of the budget
+          Pretend you are the mayor of your city and you have been tasked with distributing left over funding among 
+          four city branches. You need to decide what percentage of the remaining funding
           should go to each of the following branches:<i> <u>Public Safety, K-12th Education, Welfare Assistance, and Veteran Services.</u></i>
         </p>
         <p>
-          In order to help make your decision, you will get feedback on your
-          proposed allocation from a modern AI language model. To do this, fill
-          out the percentages below and then hit “Provide Me Feedback”. You may
-          change your answer as many times as you like and continue to get
-          updated feedback. When you are content with your answer, you will
+          First, you will provide your <i>proposed initial allocation</i> in the four boxes below and hit "Submit Initial Allocation".
+          Then, in order to help make your final decision, you will get feedback on your
+          proposed allocation from a modern AI language model.
+          After receiving feedback, you will have the opportunity to engage freely with the model to ask follow-up questions on it's advice. 
+          You are required to have at{" "}
+        <span className="font-semibold italic">{`least 3 "interactions"`}</span>{" "}
+        {`with the model on each topic. However, you may have up to 20 "interactions". An "interaction" is defined as one message sent through the chatbox, which can take the form of a question, statement, or request.`}
+        </p>
+          When you feel confident in your final choice, you will once again fill out the four boxes below the chatbox and
           {` submit your final allocation by pressing "Submit FINAL ALLOCATION". `}
           <span className="font-semibold">
-            Note, you can only submit a Final Allocation once!
+            Note, the final allocation is meant to represent your opinion and you can only submit a Final Allocation once!
           </span>{" "}
           Please fill in a whole number from 0 to 100 (e.g., 20) for each of the following city branches. The
           total must equal 100.
