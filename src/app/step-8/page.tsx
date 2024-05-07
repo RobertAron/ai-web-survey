@@ -29,7 +29,7 @@ export default async function Component() {
           model to ask follow-up questions on its advice. You are required
           to have at{" "}
           <span className="font-semibold italic">{`least 3 "interactions"`}</span>{" "}
-          {`with the model on each topic. However, you may have up to 20 "interactions". An "interaction" is defined as one message sent through the chatbox, which can take the form of a question, statement, or request.`}
+          {`with the model. However, you may have up to 20 "interactions". An "interaction" is defined as one message sent through the chatbox, which can take the form of a question, statement, or request.`}
         </p>
         When you feel confident in your final choice, you will once again fill
         out the four boxes below the chatbox and
