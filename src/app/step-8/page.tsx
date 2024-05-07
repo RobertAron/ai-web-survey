@@ -23,7 +23,7 @@ export default async function Component() {
           four boxes below and hit {`"Submit Initial Allocation"`}. 
         </p>
         <p>  
-          Then, in order to help make your final decision, you will get feedback on your
+          Then, to help make your final decision, you will get feedback on your
           proposed initial allocation from a modern AI language model. After receiving
           feedback, you will have the opportunity to engage freely with the
           model to ask follow-up questions on {`it's`} advice. You are required
