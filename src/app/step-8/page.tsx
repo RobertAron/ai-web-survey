@@ -10,7 +10,7 @@ export default async function Component() {
       <div className="w-full flex-grow bg-white p-6 flex flex-col border rounded gap-2">
         <p>
           Pretend you are the mayor of your city and you have been tasked with
-          distributing left over funding among four city branches. You need to
+          distributing <span className="italic">left over funding</span> among four city branches. You need to
           decide what percentage of the remaining funding should go to each of
           the following branches:{" "}
           <span className="italic underline">
@@ -20,9 +20,11 @@ export default async function Component() {
         </p>
         <p>
           First, you will provide your <i>proposed initial allocation</i> in the
-          four boxes below and hit {`"Submit Initial Allocation"`}. Then, in
-          order to help make your final decision, you will get feedback on your
-          proposed allocation from a modern AI language model. After receiving
+          four boxes below and hit {`"Submit Initial Allocation"`}. 
+        </p>
+        <p>  
+          Then, in order to help make your final decision, you will get feedback on your
+          proposed initial allocation from a modern AI language model. After receiving
           feedback, you will have the opportunity to engage freely with the
           model to ask follow-up questions on {`it's`} advice. You are required
           to have at{" "}

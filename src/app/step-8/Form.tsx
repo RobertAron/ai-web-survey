@@ -155,7 +155,7 @@ export function Form() {
           onCanSubmitChange={setCanSubmit1}
           submitSlot={
             <Button className="w-full" type="submit" disabled={!canSubmit1}>
-              Evaluate Allocation
+              Submit Initial Allocation
             </Button>
           }
         />
