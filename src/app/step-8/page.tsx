@@ -26,7 +26,7 @@ export default async function Component() {
           Then, to help make your final decision, you will get feedback on your
           proposed initial allocation from a modern AI language model. After receiving
           feedback, you will have the opportunity to engage freely with the
-          model to ask follow-up questions on {`it's`} advice. You are required
+          model to ask follow-up questions on its advice. You are required
           to have at{" "}
           <span className="font-semibold italic">{`least 3 "interactions"`}</span>{" "}
           {`with the model on each topic. However, you may have up to 20 "interactions". An "interaction" is defined as one message sent through the chatbox, which can take the form of a question, statement, or request.`}
