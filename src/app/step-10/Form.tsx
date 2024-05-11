@@ -11,6 +11,7 @@ const formTemplate = z.object({
   knowledge: z.record(z.string()),
   agree: z.record(z.string()),
   helpful: z.record(z.string()),
+  experience: z.record(z.string()),
 });
 
 export function Form() {
@@ -47,7 +48,8 @@ export function Form() {
           },
           {
             id: "group-1-2",
-            label: "Do you feel like the AI models you interacted with were biased in any way?",
+            label:
+              "Do you feel like the AI models you interacted with were biased in any way?",
           },
         ]}
       />
@@ -83,6 +85,25 @@ export function Form() {
             label:
               "Compared to the general public, how knowledgeable are you with AI models?",
           },
+        ]}
+      />
+      <OnAScale
+        register={register}
+        sectionKey="experience"
+        statements={[
+          {
+            id: "group-4-1",
+            label:
+              "How often do you interact with modern AI language models (such as ChatGPT, BingAI, Google Bard, etc.)?",
+          },
+        ]}
+        responses={[
+          "Daily",
+          "2-3 times a week",
+          "Once a week",
+          "2-3 times a month",
+          "Once a month or less",
+          "Never use",
         ]}
       />
       <FormSubmit type="submit" isLoading={isLoading}>

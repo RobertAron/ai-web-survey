@@ -8,6 +8,7 @@ const formTemplate = z.object({
   knowledge: z.record(z.string()),
   agree: z.record(z.string()),
   helpful: z.record(z.string()),
+  experience: z.record(z.string()),
 });
 
 export async function POST(req: NextRequest, _res: NextResponse) {
