@@ -74,7 +74,6 @@ const UserSchema = z.object({
     "somewhat_conservative",
     "very_conservative",
   ]),
-  partisan: z.enum(["democrat", "republican", "independent", "other"]),
 });
 
 export async function POST(req: NextRequest, _res: NextResponse) {
