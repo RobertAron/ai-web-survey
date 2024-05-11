@@ -368,7 +368,7 @@ export function Form() {
           </SelectContent>
         </Select>
       </div>
-      {/* <div className="space-y-1 flex flex-col">
+      <div className="space-y-1 flex flex-col">
         <Label htmlFor="partisan">Partisan</Label>
         <SubLabel>
           Generally speaking, do you usually think of yourself as a Democrat, a
@@ -392,7 +392,7 @@ export function Form() {
             <SelectItem value="other">Something else</SelectItem>
           </SelectContent>
         </Select>
-      </div> */}
+      </div>
       <FormSubmit type="submit" isLoading={isLoading}>
         Next
       </FormSubmit>
