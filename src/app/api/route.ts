@@ -16,10 +16,11 @@ function pickRandomItem<T>(arr: readonly T[]) {
 
 const options = ["Democrat", "Republican", "Control"] as const;
 const pre = "/step-1";
-const post = "/step-11";
+const post1 = "/step-10";
+const post2 = "/step-11";
 const part11 = ["/step-2", "/step-3", "/step-4"];
 const part12 = ["/step-5", "/step-6", "/step-7"];
-const part21 = ["/step-8", "/step-9", "/step-10"];
+const part21 = ["/step-8", "/step-9"];
 
 function shuffleArray<T>(array: T[]): T[] {
   const shuffledArray = [...array];
@@ -38,7 +39,8 @@ export async function POST(req: NextRequest, _res: NextResponse) {
   const userSteps = [
     pre,
     shuffleArray([shuffleArray([part11, part12]), part21]),
-    post,
+    post1,
+    post2,
   ].flat(20);
 
   try {

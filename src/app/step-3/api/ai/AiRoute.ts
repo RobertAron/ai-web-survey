@@ -88,7 +88,7 @@ where
     // const prompt = `Respond to all messages as if you are a ${aiType}. However do not say ${aiType} in your responses.`;
     // Ask OpenAI for a streaming chat completion given the prompt
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-1106",
+      model: "gpt-3.5-turbo-0125",
       stream: true,
       temperature: 0,
       messages: [

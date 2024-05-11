@@ -3,14 +3,14 @@ import { getUserId } from "./redirectCheck";
 
 export const topicsPage1 = [
   {
-    topic: "Covenant Marriages",
+    topic: "Unilateralism",
     statement:
-      "I support all states in the United States offering covenant marriages.",
+      "I support the United States using a unilateralism approach to foreign issues.",
   },
   {
-    topic: "Covenant Marriages",
+    topic: "Jurisdiction Stripping",
     statement:
-      "I support all states in the United States offering covenant marriages.",
+      "I support the use of jurisdiction stripping by Congress.",
   },
 ];
 export const topicsPage2 = [
