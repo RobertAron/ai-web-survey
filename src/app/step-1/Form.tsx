@@ -87,7 +87,6 @@ const UserSchema = z.object({
     "somewhat_conservative",
     "very_conservative",
   ]),
-  partisan: z.enum(["democrat", "republican", "independent", "other"]),
 });
 
 export function Form() {
@@ -147,11 +146,6 @@ export function Form() {
     ref: ideologyRef,
     ...restIdeologyRegister
   } = register("ideology");
-  const {
-    onChange: partisanChange,
-    ref: partisanRef,
-    ...restPartisanRegister
-  } = register("partisan");
   return (
     <form className="space-y-8" onSubmit={handleSubmit(execute)}>
       <div className="space-y-1 flex flex-col">
@@ -365,31 +359,6 @@ export function Form() {
               Somewhat Conservative
             </SelectItem>
             <SelectItem value="very_conservative">Very Conservative</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="space-y-1 flex flex-col">
-        <Label htmlFor="partisan">Partisan</Label>
-        <SubLabel>
-          Generally speaking, do you usually think of yourself as a Democrat, a
-          Republican, an Independent, or something else?
-        </SubLabel>
-        <Select
-          {...restPartisanRegister}
-          onValueChange={(val) =>
-            partisanChange({
-              target: { name: restPartisanRegister.name, value: val },
-            })
-          }
-        >
-          <SelectTrigger id="partisan" ref={genderRef}>
-            <SelectValue placeholder="Select" />
-          </SelectTrigger>
-          <SelectContent position="popper">
-            <SelectItem value="democrat">Democrat</SelectItem>
-            <SelectItem value="republican">Republican</SelectItem>
-            <SelectItem value="independent">Independent</SelectItem>
-            <SelectItem value="other">Something else</SelectItem>
           </SelectContent>
         </Select>
       </div>
