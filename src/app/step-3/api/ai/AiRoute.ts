@@ -81,7 +81,7 @@ where
       .with(
         "Control",
         () =>
-          `Respond as a generic American. As such you feel neutral about ${question.topic}. Do not mention 'generic' or 'American' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`
+          `Respond as a neutral US citizen. As such you feel neutral about ${question.topic}. Do not mention 'neutral' or 'American' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`
       )
       .exhaustive();
 
