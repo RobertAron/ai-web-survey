@@ -14,7 +14,7 @@ export async function AiInteraction({
     <Main>
       <PageTitle title="Interact with Language Model" />
       <p className="font-bold italic">
-        Now you will use a modern AI language model to learn more about the
+        Now you will use a modern AI language model (i.e. like ChatGPT) to learn more about the
         topic.
       </p>
 

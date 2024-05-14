@@ -24,7 +24,7 @@ export default async function Component() {
         </p>
         <p>  
           Then, to help make your final decision, you will get feedback on your
-          proposed initial allocation from a modern AI language model. After receiving
+          proposed initial allocation from a modern AI language model (i.e. like ChatGPT). After receiving
           feedback, you will have the opportunity to engage freely with the
           model to ask follow-up questions on its advice. You are required
           to have at{" "}
