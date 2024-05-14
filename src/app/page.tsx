@@ -21,7 +21,7 @@ export default async function Home() {
       </p>
       <H3>Time Commitment:</H3>
       <p>
-        The task will take about 15 minutes. It should be done within one session,
+        The task will take about 12 minutes. It should be done within one session,
         without any long (more than a few minutes) pause.
       </p>
       <H3>Rights:</H3>
