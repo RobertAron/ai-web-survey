@@ -99,9 +99,9 @@ export function Form() {
         ]}
         responses={[
           "Daily",
-          "2-3 times a week",
-          "Once a week",
-          "2-3 times a month",
+          "Only 2-3 times a week",
+          "Only once a week",
+          "Only 2-3 times a month",
           "Once a month or less",
           "Never use",
         ]}
