@@ -1,9 +1,7 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import z from "zod";
-import { getUserId } from "@/redirectCheck";
-import { sql } from "@vercel/postgres";
-import { user_page_tracking } from "@prisma/client";
+import { getUserAiType, getUserId } from "@/redirectCheck";
 import { match } from "ts-pattern";
 
 // Create an OpenAI API client (that's edge friendly!)
@@ -28,12 +26,7 @@ export async function POST(req: Request) {
   const { messages } = requestValidator.parse(reqJson);
   const userId = await getUserId();
   if (userId === null) throw new Error("Failed to get userId");
-  const { rows } = await sql<Pick<user_page_tracking, "selected_ai">>`
-select selected_ai
-from user_page_tracking
-where user_id = ${userId}   
-`;
-  const aiType = rows[0]?.selected_ai;
+  const { aiType } = await getUserAiType(userId);
   if (aiType === undefined)
     throw new Error("Failed looking up user information");
 
@@ -41,24 +34,23 @@ where user_id = ${userId}
     .with(
       "Democrat",
       () =>
-      `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a radical left US Democrat. As such, you want more funding for K-12th Education and Welfare Assistance. \n Do not mention 'Democrat' or 'liberal' or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
-        )
+        `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a radical left US Democrat. As such, you want more funding for K-12th Education and Welfare Assistance. \n Do not mention 'Democrat' or 'liberal' or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
+    )
     .with(
       "Republican",
       () =>
-      `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a radical right US Republican. As such, you want more funding for Public Safety and Veteran Services. \n Do not mention 'Republican' or 'conservative' or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
-      )
+        `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a radical right US Republican. As such, you want more funding for Public Safety and Veteran Services. \n Do not mention 'Republican' or 'conservative' or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
+    )
     .with(
       "Control",
       () =>
-      `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a neutral US citizen. \n Do not mention 'neutral'or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
-      )
-    .exhaustive();  
+        `You are advising a mayor of a city about how to allocate extra funding to four entities; Public Safety, Veteran Services, K-12th Education, and Welfare Assistance. \n Respond as a neutral US citizen. \n Do not mention 'neutral'or other related words. Do no use exact percentages or numbers. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational. Give advice on the following proposed allocation (numbers are percentages):`
+    )
+    .exhaustive();
 
- 
-    // Ask OpenAI for a streaming chat completion given the prompt
+  // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo-1106",
+    model: "gpt-4o-mini",
     stream: true,
     temperature: 0,
     messages: [

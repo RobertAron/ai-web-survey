@@ -1,6 +1,6 @@
 "use client";
 import { Avatar } from "@/components/ui/avatar";
-import { AlertTriangle, Bot, User } from "lucide-react";
+import { AlertTriangle, Bot, Info, User } from "lucide-react";
 import { match } from "ts-pattern";
 import { UseChatHelpers } from "ai/react";
 import React from "react";
@@ -9,27 +9,38 @@ export function Chatbox({
   useChatHelpers,
   children,
   topic,
+  warningMessage,
 }: {
   useChatHelpers: UseChatHelpers;
   children?: React.ReactNode;
   topic: string;
+  warningMessage: string | null;
 }) {
   const { messages } = useChatHelpers;
   return (
-    <div className="border border-black h-0 grow flex flex-col bg-slate-100 min-h-[600px]">
+    <div className="border border-black h-0 grow flex flex-col bg-slate-100 min-h-[700px]">
       <section
         className="h-0 grow p-4 overflow-y-scroll flex flex-col-reverse shrink"
         style={{ overflowAnchor: "auto" }}
       >
         <div className="flex flex-col gap-3 mb-auto">
-          <div className="bg-[#e89822] text-white rounded p-2 flex gap-2">
-            <AlertTriangle />
+          <div className="bg-[#2d9a14] text-white rounded p-2 flex gap-2">
+            <Info />
             <p>Interact with this chatbot {topic}</p>
           </div>
+          {warningMessage && (
+            <div className="bg-[#e89822] text-white rounded p-2 flex gap-2">
+              <AlertTriangle />
+              <p>{warningMessage}</p>
+            </div>
+          )}
           {messages.map((message) =>
             match(message)
               .with({ role: "assistant" }, (message) => (
-                <div className="flex items-end space-x-2 w-full" key={message.id}>
+                <div
+                  className="flex items-end space-x-2 w-full"
+                  key={message.id}
+                >
                   <Avatar className="h-10 w-10 border border-black bg-white">
                     <Bot size={40} />
                   </Avatar>

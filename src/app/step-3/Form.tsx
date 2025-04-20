@@ -15,10 +15,12 @@ export function Form({
   topic,
   submitUrl,
   aiStep,
+  warningMessage,
 }: {
   topic: string;
   submitUrl: string;
   aiStep: number;
+  warningMessage: string | null;
 }) {
   const useChatHelpers = useChat({
     api: `/step-${aiStep}/api/ai`,
@@ -43,6 +45,7 @@ export function Form({
       <Chatbox
         useChatHelpers={useChatHelpers}
         topic={`to learn about ${topic}.`}
+        warningMessage={warningMessage}
       >
         <ChatboxDefaultInput useChatHelpers={useChatHelpers} />
       </Chatbox>

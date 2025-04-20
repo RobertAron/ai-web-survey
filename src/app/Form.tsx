@@ -34,6 +34,7 @@ export function Form() {
     <form className="flex flex-col gap-2" onSubmit={handleSubmit(execute)}>
       <Input
         placeholder="Prolific ID"
+        autoComplete="off"
         {...register("surveyId")}
         error={errors.surveyId?.message}
       />

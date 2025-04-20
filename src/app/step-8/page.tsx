@@ -1,9 +1,12 @@
 import { Main, PageTitle } from "@/CommonComponents";
 import { Form } from "./Form";
-import { redirectCheck } from "@/redirectCheck";
+import { getUserId, getWarningMessage, redirectCheck } from "@/redirectCheck";
 
 export default async function Component() {
   await redirectCheck();
+  const userId = getUserId();
+  if (userId === null) throw new Error("Failed to get userId");
+  const warningMessage = await getWarningMessage(userId);
   return (
     <Main>
       <PageTitle title="Mayor Simulation - Budget Allocation" />
@@ -40,7 +43,7 @@ export default async function Component() {
         </span>{" "}
         Please fill in a whole number from 0 to 100 (e.g., 20) for each of the
         following city branches. The total must equal 100.
-        <Form />
+        <Form warningMessage={warningMessage} />
       </div>
     </Main>
   );

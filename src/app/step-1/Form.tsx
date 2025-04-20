@@ -53,7 +53,7 @@ const UserSchema = z.object({
     "10th",
     "11th",
     "12th",
-    "hs_no_diploma",
+    "hs_diploma",
     "some_college",
     "associate",
     "bachelor",
@@ -278,7 +278,7 @@ export function Form() {
             <SelectItem value="10th">10th grade</SelectItem>
             <SelectItem value="11th">11th grade</SelectItem>
             <SelectItem value="12th">12th grade no diploma</SelectItem>
-            <SelectItem value="hs_no_diploma">
+            <SelectItem value="hs_diploma">
               High school graduate – high school diploma or the equivalent (GED)
             </SelectItem>
             <SelectItem value="some_college">

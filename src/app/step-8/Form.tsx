@@ -118,17 +118,25 @@ function AllocationForm({
   );
 }
 
-export function Form() {
+export function Form({ warningMessage }: { warningMessage: string | null }) {
   const router = useRouter();
+  const [initialSubmit, setInitialSubmit] =
+    useState<AllocationFormValues | null>(null);
   const useChatHelpers = useChat({
     api: "/step-8/api/ai",
   });
   const onFinalSubmit = async (d: AllocationFormValues) => {
+    const initial = {
+      educationInitial: initialSubmit!.education,
+      safetyInitial: initialSubmit!.safety,
+      welfareInitial: initialSubmit!.welfare,
+      veteransInitial: initialSubmit!.veterans,
+    };
     fetch("/step-8/api", {
       method: "POST",
       body: JSON.stringify({
         messages: useChatHelpers.messages,
-        percentages: d,
+        percentages: { ...initial, ...d },
       }),
     })
       .then((res) => res.json())
@@ -147,6 +155,7 @@ export function Form() {
       {useChatHelpers.messages.length === 0 ? (
         <AllocationForm
           onSubmit={(d) => {
+            if (initialSubmit === null) setInitialSubmit(d);
             useChatHelpers.append({
               role: "user",
               content: JSON.stringify(d),
@@ -162,7 +171,8 @@ export function Form() {
       ) : (
         <Chatbox
           useChatHelpers={useChatHelpers}
-          topic="to get advice on allocation."
+          topic="to get advice on your allocation."
+          warningMessage={warningMessage}
         >
           <ChatboxDefaultInput useChatHelpers={useChatHelpers} />
         </Chatbox>

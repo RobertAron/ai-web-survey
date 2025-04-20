@@ -33,6 +33,11 @@ export async function POST(req: NextRequest, _res: NextResponse) {
           question_id: `step-10-helpful-${key}`,
           response: `${value}`,
         })),
+        ...Object.entries(parsedData.experience).map(([key, value]) => ({
+          user_id: userId?.value ?? "",
+          question_id: `step-10-experience-${key}`,
+          response: `${value}`,
+        })),
       ],
     }),
     incrementUserPage(userId!.value),

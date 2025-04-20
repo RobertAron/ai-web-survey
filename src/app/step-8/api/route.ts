@@ -16,6 +16,10 @@ const formTemplate = z.object({
     safety: z.number(),
     welfare: z.number(),
     veterans: z.number(),
+    educationInitial: z.number(),
+    safetyInitial: z.number(),
+    welfareInitial: z.number(),
+    veteransInitial: z.number(),
   }),
 });
 

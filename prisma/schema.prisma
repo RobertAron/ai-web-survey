@@ -16,14 +16,39 @@ enum AiModelType {
   Control
 }
 
+enum ExtraInfoType {
+  // no changes
+  Control 
+  // Chat warning "AI Language Models can make mistakes or be inappropriate."
+  Basic 
+  // Chat warning "This AI learned from text across the internet, which includes both facts and biases. Because of this, it may repeat stereotypes or misinformation. Remember, AI isn’t always neutral or correct"
+  Informative 
+  // If Model Bias Variable is “Republican”: This model has been trained on more right-leaning data. Therefore, its responses may reflect conservative viewpoints more than conservative ones.
+  // If Model Bias Variable is “Democrat”: This model has been trained on more left-leaning data. Therefore, its responses may reflect liberal viewpoints more than conservative ones.
+  // If Model Bias Variable is “Control”: randomize to be one of the above equally. Make sure to record which is chosen.
+  Directed
+  // extra page with video
+  // https://drive.google.com/file/d/1zaETRHQeTTS7MumyxkqFnCxTQPSkfHXq/view
+  Video
+}
+
+enum ControlSubtype {
+  None
+  Republican
+  Democrat
+}
+
 model user_page_tracking {
   user_id                   String
   current_page              String
   randomized_user_questions randomized_user_questions[]
   selected_ai               AiModelType                 @default(Republican)
+  extra_info_type           ExtraInfoType               @default(Control)
+  control_subtype           ControlSubtype              @default(None)
   user_their_data           Boolean                     @default(true)
   user_page_order           String[]
   user_page_index           Int
+  created_at                DateTime?
 
   @@unique([user_id])
 }

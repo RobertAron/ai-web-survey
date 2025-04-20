@@ -15,7 +15,17 @@ function pickRandomItem<T>(arr: readonly T[]) {
 }
 
 const options = ["Democrat", "Republican", "Control"] as const;
+const options2 = [
+  "Control",
+  "Basic",
+  "Informative",
+  "Directed",
+  "Video",
+] as const;
+const controlSubtypes = ["Democrat", "Republican"] as const;
+
 const pre = "/step-1";
+const orientationVideo = "/orientation-video";
 const post1 = "/step-10";
 const post2 = "/step-11";
 const part11 = ["/step-2", "/step-3", "/step-4"];
@@ -36,8 +46,12 @@ export async function POST(req: NextRequest, _res: NextResponse) {
   const parsedData = formValidate.parse(data);
   const nextPage = "/step-1";
   const selected_ai = pickRandomItem(options);
+  const extra_info_type = pickRandomItem(options2);
+  const control_subtype =
+    extra_info_type !== "Control" ? "None" : pickRandomItem(controlSubtypes);
   const userSteps = [
     pre,
+    extra_info_type === "Video" ? [orientationVideo] : [],
     shuffleArray([shuffleArray([part11, part12]), part21]),
     post1,
     post2,
@@ -51,6 +65,9 @@ export async function POST(req: NextRequest, _res: NextResponse) {
         user_page_index: 0,
         user_page_order: userSteps,
         selected_ai,
+        created_at: new Date(),
+        control_subtype,
+        extra_info_type,
         randomized_user_questions: {
           createMany: {
             data: [

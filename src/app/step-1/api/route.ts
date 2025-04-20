@@ -40,7 +40,7 @@ const UserSchema = z.object({
     "10th",
     "11th",
     "12th",
-    "hs_no_diploma",
+    "hs_diploma",
     "some_college",
     "associate",
     "bachelor",
