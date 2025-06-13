@@ -42,8 +42,7 @@ export function Form() {
   return (
     <div className="flex flex-col gap-4">
       <video
-        controls
-        // controls={false}
+        controls={false}
         width="600"
         ref={videoRef}
         className="border border-black"
