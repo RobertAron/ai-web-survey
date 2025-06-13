@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest, _res: NextResponse) {
-  const userId = cookies().get("user-id");
+  const userId = (await cookies()).get("user-id");
   const [nextPageResults] = await prismaClient.$transaction([
     incrementUserPage(userId!.value),
   ] as const);

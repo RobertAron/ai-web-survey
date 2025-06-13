@@ -13,7 +13,7 @@ export function PostGenerator(currentStep: string) {
   return async function POST(req: NextRequest, _res: NextResponse) {
     const data = await req.json();
     const parsedData = formTemplate.parse(data);
-    const userId = cookies().get("user-id");
+    const userId = (await cookies()).get("user-id");
     const [_, nextPageResults] = await prismaClient.$transaction([
       prismaClient.form_response.createMany({
         data: [

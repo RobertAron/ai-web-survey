@@ -87,6 +87,6 @@ export async function POST(req: NextRequest, _res: NextResponse) {
   } catch (err) {
     console.log("error creating user", err);
   }
-  cookies().set("user-id", parsedData.userId, { secure: true });
+  (await cookies()).set("user-id", parsedData.userId, { secure: true });
   return Response.json({ nextPage });
 }
