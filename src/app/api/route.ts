@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { z } from "zod";
 import { prismaClient } from "@/database";
 
@@ -50,7 +50,7 @@ async function getIp() {
   return "0.0.0.0";
 }
 
-export async function POST(req: NextRequest, _res: NextResponse) {
+export async function POST(req: NextRequest) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
   const nextPage = "/step-1";

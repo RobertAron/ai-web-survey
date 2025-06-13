@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { z } from "zod";
 import { prismaClient } from "@/database";
 import { incrementUserPage } from "@/incrementUserPage";
@@ -76,7 +76,7 @@ const UserSchema = z.object({
   ]),
 });
 
-export async function POST(req: NextRequest, _res: NextResponse) {
+export async function POST(req: NextRequest) {
   const data = await req.json();
   const parsedData = UserSchema.parse(data);
   const userId = (await cookies()).get("user-id");

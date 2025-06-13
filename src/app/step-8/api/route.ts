@@ -1,7 +1,7 @@
 import { prismaClient } from "@/database";
 import { incrementUserPage } from "@/incrementUserPage";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { z } from "zod";
 
 const formTemplate = z.object({
@@ -23,7 +23,7 @@ const formTemplate = z.object({
   }),
 });
 
-export async function POST(req: NextRequest, _res: NextResponse) {
+export async function POST(req: NextRequest) {
   const data = await req.json();
   const parsedData = formTemplate.parse(data);
   const userId = (await cookies()).get("user-id");
