@@ -48,7 +48,8 @@ model user_page_tracking {
   user_their_data           Boolean                     @default(true)
   user_page_order           String[]
   user_page_index           Int
-  created_at                DateTime?                    @default(now())
+  ip_address                String?
+  created_at                DateTime?                   @default(now())
 
   @@unique([user_id])
 }

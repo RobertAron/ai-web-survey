@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prismaClient } from "@/database";
@@ -41,6 +41,15 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffledArray;
 }
 
+async function getIp() {
+  const headerContent = await headers();
+  const forwardFor = headerContent.get("x-forwarded-for");
+  const realIp = headerContent.get("x-real-ip");
+  if (forwardFor) return forwardFor.split(",")[0].trim();
+  if (realIp) return realIp.trim();
+  return "0.0.0.0";
+}
+
 export async function POST(req: NextRequest, _res: NextResponse) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
@@ -68,6 +77,7 @@ export async function POST(req: NextRequest, _res: NextResponse) {
         created_at: new Date(),
         control_subtype,
         extra_info_type,
+        ip_address: await getIp(),
         randomized_user_questions: {
           createMany: {
             data: [
