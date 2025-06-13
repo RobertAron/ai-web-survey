@@ -18,11 +18,11 @@ enum AiModelType {
 
 enum ExtraInfoType {
   // no changes
-  Control 
+  Control
   // Chat warning "AI Language Models can make mistakes or be inappropriate."
-  Basic 
+  Basic
   // Chat warning "This AI learned from text across the internet, which includes both facts and biases. Because of this, it may repeat stereotypes or misinformation. Remember, AI isn’t always neutral or correct"
-  Informative 
+  Informative
   // If Model Bias Variable is “Republican”: This model has been trained on more right-leaning data. Therefore, its responses may reflect conservative viewpoints more than conservative ones.
   // If Model Bias Variable is “Democrat”: This model has been trained on more left-leaning data. Therefore, its responses may reflect liberal viewpoints more than conservative ones.
   // If Model Bias Variable is “Control”: randomize to be one of the above equally. Make sure to record which is chosen.
@@ -48,7 +48,7 @@ model user_page_tracking {
   user_their_data           Boolean                     @default(true)
   user_page_order           String[]
   user_page_index           Int
-  created_at                DateTime?
+  created_at                DateTime?                    @default(now())
 
   @@unique([user_id])
 }
@@ -69,6 +69,7 @@ model form_response {
   user_id     String
   question_id String
   response    String
+  created_at  DateTime @default(now())
 
   @@unique([user_id, question_id])
 }
