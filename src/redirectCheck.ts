@@ -1,4 +1,4 @@
-import { cookies, headers, type UnsafeUnwrappedCookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { prismaClient } from "./database";
 import { redirect } from "next/navigation";
 import { user_page_tracking } from "@prisma/client";
@@ -8,7 +8,7 @@ import { match } from "ts-pattern";
 export async function redirectCheck() {
   const headersList = await headers();
   const url = headersList.get("x-url") || "";
-  const userIdCookie = getUserId();
+  const userIdCookie = await getUserId();
   const isOnHomePage = url === "/";
   const noUserId = userIdCookie === null;
   // Not logged in - load the home page
@@ -39,8 +39,8 @@ export async function redirectCheck() {
   redirect(currentPage);
 }
 
-export function getUserId() {
-  const cookieStore = (cookies() as unknown as UnsafeUnwrappedCookies);
+export async function getUserId() {
+  const cookieStore = await cookies();
   const userId = cookieStore.get("user-id")?.value;
   return userId ?? null;
 }

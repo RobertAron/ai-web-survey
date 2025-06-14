@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useAsyncAction } from "@/useAsyncAction";
+import posthog from "posthog-js";
 
 const schema = z.object({
   surveyId: z.string().min(1, { message: "Required" }),
@@ -19,6 +20,7 @@ export function Form() {
   } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
   });
+  
   const router = useRouter();
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
     fetch("/api", {
@@ -26,7 +28,10 @@ export function Form() {
       body: JSON.stringify({ userId: d.surveyId }),
     })
       .then((res) => res.json())
-      .then((res) => router.push(res.nextPage));
+      .then((res) => {
+        posthog.identify(d.surveyId)
+        return router.push(res.nextPage);
+      });
   const { execute, isLoading } = useAsyncAction(onSubmit, {
     keepLoadingOnSuccess: true,
   });

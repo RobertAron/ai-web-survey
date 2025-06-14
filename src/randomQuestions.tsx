@@ -45,7 +45,7 @@ export function pickRandomQuestionIndexes() {
 }
 
 export async function getUserQuestion(index: number) {
-  const userId = getUserId();
+  const userId = await getUserId();
   if (userId === null) throw new Error("Could not get user ID");
   const result = await prismaClient.randomized_user_questions.findUnique({
     where: {
@@ -60,7 +60,7 @@ export async function getUserQuestion(index: number) {
 }
 
 export async function getAiType() {
-  const userId = getUserId();
+  const userId = await getUserId();
   if (userId === null) throw new Error("Could not get user ID");
   const res = await prismaClient.user_page_tracking.findUnique({
     where: {

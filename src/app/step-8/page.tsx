@@ -4,7 +4,7 @@ import { getUserId, getWarningMessage, redirectCheck } from "@/redirectCheck";
 
 export default async function Component() {
   await redirectCheck();
-  const userId = getUserId();
+  const userId = await getUserId();
   if (userId === null) throw new Error("Failed to get userId");
   const warningMessage = await getWarningMessage(userId);
   return (

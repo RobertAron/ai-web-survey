@@ -28,12 +28,12 @@ export function PageTitle({
   );
 }
 
-export function MyLink<RouteInferType>({
+export function MyLink({
   children,
   href,
 }: {
   children: React.ReactNode;
-  href: __next_route_internal_types__.RouteImpl<RouteInferType> | UrlObject;
+  href: UrlObject;
 }) {
   return (
     <Link
