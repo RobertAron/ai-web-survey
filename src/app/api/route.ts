@@ -25,6 +25,7 @@ const options2 = [
 const controlSubtypes = ["Democrat", "Republican"] as const;
 
 const pre = "/step-1";
+const botDetection = ["/notification", "/notification-check"];
 const orientationVideo = "/orientation-video";
 const post1 = "/step-10";
 const post2 = "/step-11";
@@ -60,6 +61,7 @@ export async function POST(req: NextRequest) {
     extra_info_type !== "Control" ? "None" : pickRandomItem(controlSubtypes);
   const userSteps = [
     pre,
+    botDetection,
     extra_info_type === "Video" ? [orientationVideo] : [],
     shuffleArray([shuffleArray([part11, part12]), part21]),
     post1,
