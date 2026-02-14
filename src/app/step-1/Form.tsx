@@ -16,58 +16,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useAsyncAction } from "@/useAsyncAction";
 
-const stateNames = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
-] as const;
 const UserSchema = z.object({
   ageResponse: z.coerce.number().positive().max(120),
   gender: z.enum(["male", "female", "other"]),
@@ -132,15 +80,7 @@ const UserSchema = z.object({
     "16",
     "17",
   ]),
-  ideology: z.enum([
-    "very_liberal",
-    "somewhat_liberal",
-    "middle",
-    "somewhat_conservative",
-    "very_conservative",
-  ]),
-  state: z.enum(stateNames),
-  zipCode: z.string(),
+  zipCode: z.string().regex(/^\d{5}$/, "Zip code must be exactly 5 digits"),
 });
 
 export function Form() {
@@ -195,16 +135,6 @@ export function Form() {
     ref: incomeRef,
     ...restIncomeRegister
   } = register("income");
-  const {
-    onChange: ideologyChange,
-    ref: ideologyRef,
-    ...restIdeologyRegister
-  } = register("ideology");
-  const {
-    onChange: stateChange,
-    ref: stateRef,
-    ...restStateRegister
-  } = register("state");
   const {
     onChange: zipCodeChange,
     ref: zipCodeRef,
@@ -402,62 +332,16 @@ export function Form() {
         </Select>
       </div>
       <div className="space-y-1 flex flex-col">
-        <Label htmlFor="ideology">Ideology</Label>
-        <SubLabel>How would you rate yourself on this scale?</SubLabel>
-        <Select
-          {...restIdeologyRegister}
-          onValueChange={(val) =>
-            ideologyChange({
-              target: { name: restIdeologyRegister.name, value: val },
-            })
-          }
-        >
-          <SelectTrigger id="ideology" ref={ideologyRef}>
-            <SelectValue placeholder="Select" />
-          </SelectTrigger>
-          <SelectContent position="popper">
-            <SelectItem value="very_liberal">Very Liberal</SelectItem>
-            <SelectItem value="somewhat_liberal">Somewhat Liberal</SelectItem>
-            <SelectItem value="middle">Middle of the Road</SelectItem>
-            <SelectItem value="somewhat_conservative">
-              Somewhat Conservative
-            </SelectItem>
-            <SelectItem value="very_conservative">Very Conservative</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="space-y-1 flex flex-col">
-        <Label htmlFor="state">State</Label>
-        <SubLabel>Which state do you live in?</SubLabel>
-        <Select
-          {...restStateRegister}
-          onValueChange={(val) =>
-            stateChange({
-              target: { name: restStateRegister.name, value: val },
-            })
-          }
-        >
-          <SelectTrigger id="state" ref={stateRef}>
-            <SelectValue placeholder="Select" />
-          </SelectTrigger>
-          <SelectContent position="popper">
-            {stateNames.map((ele) => {
-              return (
-                <SelectItem key={ele} value={ele}>
-                  {ele}
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="space-y-1 flex flex-col">
-        <Label htmlFor="state">Zip Code</Label>
+        <Label htmlFor="zipCode">Zip Code</Label>
         <SubLabel>What is the zip code you live in</SubLabel>
         <Input
           onChange={zipCodeChange}
           ref={zipCodeRef}
           {...restZipCodeRegister}
+          maxLength={5}
+          pattern="[0-9]{5}"
+          inputMode="numeric"
+          error={errors.zipCode?.message?.toString()}
         />
       </div>
       <FormSubmit type="submit" isLoading={isLoading}>

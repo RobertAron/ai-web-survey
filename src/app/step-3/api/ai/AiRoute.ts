@@ -78,11 +78,6 @@ where
             question.topic
           }. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`
       )
-      .with(
-        "Control",
-        () =>
-          `Respond as a neutral US citizen. As such you feel neutral about ${question.topic}. Do not mention 'neutral' or 'American' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response briefly.`
-      )
       .exhaustive();
 
     // const prompt = `Respond to all messages as if you are a ${aiType}. However do not say ${aiType} in your responses.`;

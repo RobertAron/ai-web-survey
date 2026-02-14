@@ -15,12 +15,14 @@ export const topicsPage1 = [
 ];
 export const topicsPage2 = [
   {
-    topic: "Lacey Act of 1900",
-    statement: "I support keeping the Lacey Act of 1900.",
+    topic: "Postal Banking",
+    statement:
+      "I support expanding postal banking services in the United States.",
   },
   {
-    topic: "Multifamily Zoning Laws",
-    statement: "I support laws that expand multifamily zoning.",
+    topic: "Nonprofit Tax Uniformity",
+    statement:
+      "I support federal strict uniform tax standards for all nonprofit organizations.",
   },
 ];
 

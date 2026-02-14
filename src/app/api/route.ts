@@ -2,36 +2,19 @@ import { cookies, headers } from "next/headers";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import { prismaClient } from "@/database";
+import { AiModelType } from "@prisma/client";
 
 const formValidate = z.object({
   userId: z.string(),
 });
 
-function pickRandomItem<T>(arr: readonly T[]) {
-  // Generate a random index between 0 (inclusive) and the length of the array (exclusive)
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  // Return the item at the randomly chosen index
-  return arr[randomIndex];
-}
-
-const options = ["Democrat", "Republican", "Control"] as const;
-const options2 = [
-  "Control",
-  "Basic",
-  "Informative",
-  "Directed",
-  "Video",
-] as const;
-const controlSubtypes = ["Democrat", "Republican"] as const;
-
 const pre = "/step-1";
 const botDetection = ["/notification", "/notification-check"];
-const orientationVideo = "/orientation-video";
 const post1 = "/step-10";
 const post2 = "/step-11";
 const part11 = ["/step-2", "/step-3", "/step-4"];
 const part12 = ["/step-5", "/step-6", "/step-7"];
-const part21 = ["/step-8", "/step-9"];
+const part21 = ["/step-8"];
 
 function shuffleArray<T>(array: T[]): T[] {
   const shuffledArray = [...array];
@@ -51,18 +34,25 @@ async function getIp() {
   return "0.0.0.0";
 }
 
+function getSelectedAi(): AiModelType {
+  const party = process.env.NEXT_PUBLIC_PARTICIPANT_PARTY;
+  if (party === "democrat") return "Republican";
+  if (party === "republican") return "Democrat";
+  throw new Error(
+    `Invalid NEXT_PUBLIC_PARTICIPANT_PARTY: ${party}. Must be "democrat" or "republican".`
+  );
+}
+
 export async function POST(req: NextRequest) {
   const data = await req.json();
   const parsedData = formValidate.parse(data);
   const nextPage = "/step-1";
-  const selected_ai = pickRandomItem(options);
-  const extra_info_type = pickRandomItem(options2);
-  const control_subtype =
-    extra_info_type !== "Control" ? "None" : pickRandomItem(controlSubtypes);
+  const selected_ai = getSelectedAi();
+  const causal = Math.round(Math.random());
+  const risk = Math.round(Math.random());
   const userSteps = [
     pre,
     botDetection,
-    extra_info_type === "Video" ? [orientationVideo] : [],
     shuffleArray([shuffleArray([part11, part12]), part21]),
     post1,
     post2,
@@ -76,9 +66,9 @@ export async function POST(req: NextRequest) {
         user_page_index: 0,
         user_page_order: userSteps,
         selected_ai,
+        causal,
+        risk,
         created_at: new Date(),
-        control_subtype,
-        extra_info_type,
         ip_address: await getIp(),
         randomized_user_questions: {
           createMany: {

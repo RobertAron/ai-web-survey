@@ -69,10 +69,6 @@ export function Form({
             id: "group-2-1",
             label: `How much do you agree with the following: ${statement}`,
           },
-          {
-            id: "group-2-2",
-            label: 'How much do you agree with the following: The AI was helpful in learning about the topic.',
-          },
         ]}
       />
       <FormSubmit type="submit" isLoading={isLoading}>

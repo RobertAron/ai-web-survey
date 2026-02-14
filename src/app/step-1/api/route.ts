@@ -4,59 +4,6 @@ import { z } from "zod";
 import { prismaClient } from "@/database";
 import { incrementUserPage } from "@/incrementUserPage";
 
-const stateNames = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
-] as const;
-
 const UserSchema = z.object({
   age: z.number(),
   gender: z.enum(["male", "female", "other", "preferNotToSay"]),
@@ -121,15 +68,7 @@ const UserSchema = z.object({
     "16",
     "17",
   ]),
-  ideology: z.enum([
-    "very_liberal",
-    "somewhat_liberal",
-    "middle",
-    "somewhat_conservative",
-    "very_conservative",
-  ]),
-  state: z.enum(stateNames),
-  zipCode: z.string(),
+  zipCode: z.string().regex(/^\d{5}$/),
 });
 
 export async function POST(req: NextRequest) {
@@ -146,7 +85,6 @@ export async function POST(req: NextRequest) {
       })),
     }),
     incrementUserPage(userId!.value),
-    // incrementUserPage(userId!.value)
   ] as const);
   const nextPage =
     nextPageResults.user_page_order[nextPageResults.user_page_index];
