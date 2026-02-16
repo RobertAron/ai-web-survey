@@ -5,6 +5,21 @@ import { match } from "ts-pattern";
 import { UseChatHelpers } from "ai/react";
 import React from "react";
 
+function BoldWords({ text, words }: { text: string; words: string[] }) {
+  const parts = text.split(new RegExp(`(${words.join("|")})`, "gi"));
+  return (
+    <>
+      {parts.map((part, i) =>
+        words.includes(part) ? (
+          <b key={i}>{part}</b>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
 export function Chatbox({
   useChatHelpers,
   children,
@@ -40,7 +55,10 @@ export function Chatbox({
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <AlertTriangle className="shrink-0" />
-              <p>{warningMessage}</p>
+              {/* <p>{warningMessage}</p> */}
+                <p>
+                  <BoldWords text={warningMessage} words={["imperfect", "mistakes", "incorrect", "unbalanced", "politically skewed", "one-sided", "faulty"]} />
+                </p>
             </div>
           )}
           {messages.map((message) =>
