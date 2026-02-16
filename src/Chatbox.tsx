@@ -28,10 +28,10 @@ export function Chatbox({
         style={{ overflowAnchor: "auto" }}
       >
         <div className="flex flex-col gap-3 mb-auto">
-          <div className="bg-[#2d9a14] text-white rounded p-2 flex gap-2">
+          {/* <div className="bg-[#2d9a14] text-white rounded p-2 flex gap-2">
             <Info className="shrink-0" />
             <p>Interact with this chatbot {topic}</p>
-          </div>
+          </div> */}
           {warningMessage && (
             <div
               className="bg-yellow-300 text-black border-2 border-black rounded p-2 flex gap-2 text-lg"
