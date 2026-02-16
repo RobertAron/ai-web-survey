@@ -55,10 +55,10 @@ export function Chatbox({
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <AlertTriangle className="shrink-0" />
-              {/* <p>{warningMessage}</p> */}
-                <p>
+               <p>{warningMessage}</p>
+                {/* <p>
                   <BoldWords text={warningMessage} words={["imperfect", "mistakes", "incorrect", "unbalanced", "politically skewed", "one-sided", "faulty"]} />
-                </p>
+                </p> */}
             </div>
           )}
           {messages.map((message) =>
