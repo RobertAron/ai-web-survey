@@ -34,7 +34,7 @@ export function Chatbox({
           </div>
           {warningMessage && (
             <div
-              className="bg-yellow-200 text-black rounded p-2 flex gap-2"
+              className="bg-yellow-300 text-black border-2 border-black rounded p-2 flex gap-2 text-lg"
               style={{ fontFamily: "Arial, sans-serif" }}
             >
               <AlertTriangle className="shrink-0" />
