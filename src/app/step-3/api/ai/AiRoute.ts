@@ -67,7 +67,7 @@ where
             questionIndex === 0 ? "are against" : "support"
           } ${
             question.topic
-          }. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Avoid speaking in first person ('I', 'We', etc.). Respond briefly.`
+          }. Do not mention 'Democrat' or 'liberal' or 'left' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational.`
       )
       .with(
         "Republican",
@@ -76,7 +76,7 @@ where
             questionIndex === 0 ? "support" : "are against"
           } ${
             question.topic
-          }. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Avoid speaking in first person ('I', 'We', etc.). Respond briefly.`
+          }. Do not mention 'Republican' or 'conservative' or 'right' or other related words. Avoid speaking in first person ('I', 'We', etc.). Response with less than 6 sentences. Be conversational.`
       )
       .exhaustive();
 
