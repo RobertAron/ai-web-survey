@@ -96,10 +96,11 @@ export function Form({ warningMessage }: { warningMessage: string }) {
         register={register}
         sectionKey="knowledge"
         responses={[
-          "I don't know anything about them",
-          "I know a little",
+          "I know much less than most",
+          "I know a little less than most",
+          "I know about the same as most",
           "I know more than most",
-          "I know a lot",
+          "I know much more than most",
         ]}
         statements={[
           {
@@ -183,9 +184,9 @@ function ManipulationCheck({
   const { onChange, ...restRegister } = register(registerKey);
 
   const decoyOptions = [
-    "AI responses may sound confident even when they are incorrect.",
-    "AI outputs should be verified with trusted sources.",
-    "AI responses may vary depending on how a question is asked.",
+    "CAUTION: AI responses may sound confident even when they are incorrect.",
+    "CAUTION: AI outputs should be verified with trusted sources.",
+    "CAUTION: AI responses may vary depending on how a question is asked.",
   ];
 
   const options = [...decoyOptions, warningMessage];
