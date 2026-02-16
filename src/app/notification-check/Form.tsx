@@ -37,7 +37,7 @@ export function Form() {
   console.log(watch());
   return (
     <form className="space-y-4" onSubmit={handleSubmit(execute)}>
-      <Label htmlFor="understand">Do you understand the instructions</Label>
+      <Label htmlFor="understand">Do you understand the instructions?</Label>
       <RadioGroup
         {...restUnderstandRegister}
         onValueChange={(val) =>
