@@ -69,20 +69,28 @@ const UserSchema = z.object({
     "17",
   ]),
   zipCode: z.string().regex(/^\d{5}$/),
+  biasDetection: z.record(z.string()),
 });
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
-  const parsedData = UserSchema.parse(data);
+  const { biasDetection, ...parsedData } = UserSchema.parse(data);
   const userId = (await cookies()).get("user-id");
 
   const [_, nextPageResults] = await prismaClient.$transaction([
     prismaClient.form_response.createMany({
-      data: Object.entries(parsedData).map(([key, value]) => ({
-        user_id: userId?.value ?? "",
-        question_id: `step-1-${key}`,
-        response: `${value}`,
-      })),
+      data: [
+        ...Object.entries(parsedData).map(([key, value]) => ({
+          user_id: userId?.value ?? "",
+          question_id: `step-1-${key}`,
+          response: `${value}`,
+        })),
+        ...Object.entries(biasDetection).map(([key, value]) => ({
+          user_id: userId?.value ?? "",
+          question_id: `step-1-biasDetection-${key}`,
+          response: `${value}`,
+        })),
+      ],
     }),
     incrementUserPage(userId!.value),
   ] as const);

@@ -2,7 +2,7 @@ import { Main, PageTitle } from "@/CommonComponents";
 import { Form } from "./Form";
 import { redirectCheck } from "@/redirectCheck";
 
-export default async function DemographicSurvey() {
+export default async function AreYouHumanInstructions() {
   const redirect = await redirectCheck();
   if (redirect !== null) return redirect;
   return (

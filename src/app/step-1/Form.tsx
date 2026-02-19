@@ -15,6 +15,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useAsyncAction } from "@/useAsyncAction";
+import { OnAScale } from "@/OnAScale";
 
 const UserSchema = z.object({
   ageResponse: z.coerce.number().positive().max(120),
@@ -81,6 +82,7 @@ const UserSchema = z.object({
     "17",
   ]),
   zipCode: z.string().regex(/^\d{5}$/, "Zip code must be exactly 5 digits"),
+  biasDetection: z.record(z.string()),
 });
 
 export function Form() {
@@ -342,6 +344,67 @@ export function Form() {
           pattern="[0-9]{5}"
           inputMode="numeric"
           error={errors.zipCode?.message?.toString()}
+        />
+      </div>
+      <div className="space-y-6 flex flex-col">
+        <p>
+          Here are a number of personality traits that may or may not apply to
+          you. Please indicate the extent to which you agree or disagree with
+          each statement. You should rate the extent to which the pair of traits
+          applies to you, even if one characteristic applies more strongly than
+          the other. I see myself as…
+        </p>
+        <OnAScale
+          register={register}
+          sectionKey={"biasDetection"}
+          responses={[
+            "Disagree strongly",
+            "Disagree moderately",
+            "Disagree a little",
+            "Neither agree nor disagree",
+            "Agree a little",
+            "Agree moderately",
+            "Agree strongly",
+          ]}
+          statements={[
+            {
+              label: "Extraverted",
+              id: "Extraversion1",
+            },
+            {
+              label: "Critical",
+              id: "Agreeableness1",
+            },
+            {
+              label: "Dependable",
+              id: "Conscientiousness1",
+            },
+            {
+              label: "Anxious",
+              id: "EmotionallyStable1",
+            },
+            {
+              label: "Open to new experiences",
+              id: "Openness1",
+            },
+            {
+              label: "Reserved",
+              id: "Extraversion2",
+            },
+            {
+              label: "Sympathetic",
+              id: "Agreeableness2",
+            },
+            {
+              label: "Disorganized",
+              id: "Conscientiousness2",
+            },
+            {
+              label: "Calm",
+              id: "EmotionallyStable2",
+            },
+            { label: "Conventional", id: "Openness2" },
+          ]}
         />
       </div>
       <FormSubmit type="submit" isLoading={isLoading}>
