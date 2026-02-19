@@ -199,14 +199,14 @@ function ManipulationCheck({
   const decoyOptions =
     causal === 0
       ? [
-          "This AI can sound confident even when its information is inaccurate or misleading.",
-          "This AI may provide answers that should be checked against reliable, trusted sources.",
-          "This AI’s responses can change depending on how a question is phrased or framed.",
+          "CAUTION: This AI can sound confident even when its information is inaccurate or misleading.",
+          "CAUTION: This AI may provide answers that should be checked against reliable, trusted sources.",
+          "CAUTION: This AI’s responses can change depending on how a question is phrased or framed.",
         ]
       : [
-          "This AI can sound confident even when its information is inaccurate or misleading. Therefore, one should use with caution.",
-          "This AI may provide answers that should be checked against reliable, trusted sources. Therefore, important information should be confirmed.",
-          "This AI’s responses can change depending on how a question is phrased or framed. Therefore, different prompts should be tried.",
+          "CAUTION: This AI can sound confident even when its information is inaccurate or misleading. Therefore, one should use with caution.",
+          "CAUTION: This AI may provide answers that should be checked against reliable, trusted sources. Therefore, important information should be confirmed.",
+          "CAUTION: This AI’s responses can change depending on how a question is phrased or framed. Therefore, different prompts should be tried.",
         ];
 
   const options = [...decoyOptions, warningMessage];
