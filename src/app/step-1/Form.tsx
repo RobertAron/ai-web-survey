@@ -368,42 +368,42 @@ export function Form() {
           ]}
           statements={[
             {
-              label: "Extraverted",
+              label: "Extraverted, Enthusiastic",
               id: "Extraversion1",
             },
             {
-              label: "Critical",
+              label: "Critical, Quarrelsome",
               id: "Agreeableness1",
             },
             {
-              label: "Dependable",
+              label: "Dependable, Self-Disciplined",
               id: "Conscientiousness1",
             },
             {
-              label: "Anxious",
+              label: "Anxious, Easily Upset",
               id: "EmotionallyStable1",
             },
             {
-              label: "Open to new experiences",
+              label: "Open to new experiences, Complex",
               id: "Openness1",
             },
             {
-              label: "Reserved",
+              label: "Reserved, Quiet",
               id: "Extraversion2",
             },
             {
-              label: "Sympathetic",
+              label: "Sympathetic, Warm",
               id: "Agreeableness2",
             },
             {
-              label: "Disorganized",
+              label: "Disorganized, Careless",
               id: "Conscientiousness2",
             },
             {
-              label: "Calm",
+              label: "Calm, Emotionally Stable",
               id: "EmotionallyStable2",
             },
-            { label: "Conventional", id: "Openness2" },
+            { label: "Conventional, Uncreative", id: "Openness2" },
           ]}
         />
       </div>
