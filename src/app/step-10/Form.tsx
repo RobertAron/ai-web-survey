@@ -19,7 +19,13 @@ const formTemplate = z.object({
   manipulationCheck: z.record(z.string()),
 });
 
-export function Form({ warningMessage }: { warningMessage: string }) {
+export function Form({
+  warningMessage,
+  causal,
+}: {
+  warningMessage: string;
+  causal: number;
+}) {
   const router = useRouter();
   const { register, handleSubmit, control } = useForm<
     z.infer<typeof formTemplate>
@@ -122,8 +128,7 @@ export function Form({ warningMessage }: { warningMessage: string }) {
         statements={[
           {
             id: "group-ai-education",
-            label:
-              "What level of education or exposure have you had to AI?",
+            label: "What level of education or exposure have you had to AI?",
           },
         ]}
       />
@@ -165,7 +170,11 @@ export function Form({ warningMessage }: { warningMessage: string }) {
           },
         ]}
       />
-      <ManipulationCheck register={register} warningMessage={warningMessage} />
+      <ManipulationCheck
+        register={register}
+        warningMessage={warningMessage}
+        causal={causal}
+      />
       <FormSubmit type="submit" isLoading={isLoading}>
         Next
       </FormSubmit>
@@ -176,18 +185,29 @@ export function Form({ warningMessage }: { warningMessage: string }) {
 function ManipulationCheck({
   register,
   warningMessage,
+  causal,
 }: {
-  register: ReturnType<typeof useForm<z.infer<typeof formTemplate>>>["register"];
+  register: ReturnType<
+    typeof useForm<z.infer<typeof formTemplate>>
+  >["register"];
   warningMessage: string;
+  causal: number;
 }) {
   const registerKey = "manipulationCheck.group-manipulation-check";
   const { onChange, ...restRegister } = register(registerKey);
 
-  const decoyOptions = [
-    "CAUTION: AI responses may sound confident even when they are incorrect.",
-    "CAUTION: AI outputs should be verified with trusted sources.",
-    "CAUTION: AI responses may vary depending on how a question is asked.",
-  ];
+  const decoyOptions =
+    causal === 0
+      ? [
+          "This AI can sound confident even when its information is inaccurate or misleading.",
+          "This AI may provide answers that should be checked against reliable, trusted sources.",
+          "This AI’s responses can change depending on how a question is phrased or framed.",
+        ]
+      : [
+          "This AI can sound confident even when its information is inaccurate or misleading. Therefore, one should use with caution.",
+          "This AI may provide answers that should be checked against reliable, trusted sources. Therefore, important information should be confirmed.",
+          "This AI’s responses can change depending on how a question is phrased or framed. Therefore, different prompts should be tried.",
+        ];
 
   const options = [...decoyOptions, warningMessage];
 

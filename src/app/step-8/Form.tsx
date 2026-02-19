@@ -107,7 +107,7 @@ function AllocationForm({
             {
               "text-orange-500": remaining !== 0,
               "text-green-600": remaining === 0,
-            }
+            },
           )}
         >
           {Number(remaining.toFixed(2))} Remaining
@@ -117,6 +117,11 @@ function AllocationForm({
     </form>
   );
 }
+
+const delay = (ms: number) =>
+  new Promise((res) => {
+    setTimeout(res, ms);
+  });
 
 export function Form({ warningMessage }: { warningMessage: string | null }) {
   const router = useRouter();
@@ -154,8 +159,9 @@ export function Form({ warningMessage }: { warningMessage: string | null }) {
     <>
       {useChatHelpers.messages.length === 0 ? (
         <AllocationForm
-          onSubmit={(d) => {
+          onSubmit={async (d) => {
             if (initialSubmit === null) setInitialSubmit(d);
+            await delay(3_000);
             useChatHelpers.append({
               role: "user",
               content: JSON.stringify(d),

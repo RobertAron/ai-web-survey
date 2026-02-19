@@ -90,9 +90,13 @@ export default async function Home() {
         *** Once again, thank you for your participation in this study! ***
       </p>
       <div className="flex flex-col gap-2">
-      <a
+        <a
           className={cn(buttonVariants(), "cursor-pointer")}
-          href="https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
+          href={
+            process.env.NEXT_PUBLIC_PARTICIPANT_PARTY === "democrat"
+              ? "democrat url here"
+              : "republican url here"
+          }
         >
           Submit Survey
         </a>
