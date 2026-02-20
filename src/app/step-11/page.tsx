@@ -94,8 +94,8 @@ export default async function Home() {
           className={cn(buttonVariants(), "cursor-pointer")}
           href={
             process.env.NEXT_PUBLIC_PARTICIPANT_PARTY === "democrat"
-              ? "democrat url here"
-              : "republican url here"
+              ? "https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
+              : "https://app.prolific.com/submissions/complete?cc=CSZBEP6O"
           }
         >
           Submit Survey
