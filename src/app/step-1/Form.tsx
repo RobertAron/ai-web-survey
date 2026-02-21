@@ -347,6 +347,25 @@ export function Form() {
         />
       </div>
       <div className="space-y-6 flex flex-col">
+        <OnAScale
+          register={register}
+          sectionKey={"biasDetection"}
+          responses={[
+            "1 (not very true of me)",
+            "2",
+            "3",
+            "4",
+            "5 (very true of me)",
+          ]}
+          statements={[
+            {
+              label: "I have high self-esteem.",
+              id: "self-esteem",
+            },
+          ]}
+        />
+      </div>
+      <div className="space-y-6 flex flex-col">
         <p>
           Here are a number of personality traits that may or may not apply to
           you. Please indicate the extent to which you agree or disagree with
