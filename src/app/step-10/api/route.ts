@@ -26,11 +26,13 @@ export async function POST(req: NextRequest) {
       question_id: `step-10-biasDetection-${key}`,
       response: `${value}`,
     })),
-    ...Object.entries(parsedData.biasDirection).map(([key, value]) => ({
-      user_id: uid,
-      question_id: `step-10-biasDirection-${key}`,
-      response: `${value}`,
-    })),
+    ...(parsedData.biasDirection
+      ? Object.entries(parsedData.biasDirection).map(([key, value]) => ({
+          user_id: uid,
+          question_id: `step-10-biasDirection-${key}`,
+          response: `${value}`,
+        }))
+      : []),
     ...Object.entries(parsedData.knowledge).map(([key, value]) => ({
       user_id: uid,
       question_id: `step-10-knowledge-${key}`,

@@ -11,7 +11,7 @@ import { RadioGroupItem, RadioGroup } from "@/components/ui/radio-group";
 
 const formTemplate = z.object({
   biasDetection: z.record(z.string()),
-  biasDirection: z.record(z.string()),
+  biasDirection: z.record(z.string()).default({}),
   knowledge: z.record(z.string()),
   aiEducation: z.record(z.string()),
   aiUse: z.record(z.string()),
