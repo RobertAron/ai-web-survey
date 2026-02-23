@@ -9,15 +9,35 @@ import { z } from "zod";
 import { Label } from "@/components/ui/label";
 import { RadioGroupItem, RadioGroup } from "@/components/ui/radio-group";
 
-const formTemplate = z.object({
-  biasDetection: z.record(z.string()),
-  biasDirection: z.record(z.string()).default({}),
-  knowledge: z.record(z.string()),
-  aiEducation: z.record(z.string()),
-  aiUse: z.record(z.string()),
-  aiTrust: z.record(z.string()),
-  manipulationCheck: z.record(z.string()),
-});
+const formTemplate = z
+  .object({
+    biasDetection: z.record(z.string()),
+    biasDirection: z.record(z.string()).default({}),
+    knowledge: z.record(z.string()),
+    aiEducation: z.record(z.string()),
+    aiUse: z.record(z.string()),
+    aiTrust: z.record(z.string()),
+    manipulationCheck: z.record(z.string()),
+  })
+  .superRefine((data, ctx) => {
+    const answer = data.biasDetection?.["group-bias-detection"];
+
+    const needsDirection =
+      answer === "Likely Yes" || answer === "Definitely Yes";
+
+    if (needsDirection) {
+      const direction =
+        data.biasDirection?.["group-bias-direction"];
+
+      if (!direction) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["biasDirection", "group-bias-direction"],
+          message: "Please indicate which direction.",
+        });
+      }
+    }
+  });
 
 
 export function Form({
