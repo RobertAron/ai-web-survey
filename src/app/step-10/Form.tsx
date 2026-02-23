@@ -18,6 +18,11 @@ import { RadioGroupItem, RadioGroup } from "@/components/ui/radio-group";
 //   aiTrust: z.record(z.string()),
 //   manipulationCheck: z.record(z.string()),
 // });
+type FormValues = z.infer<typeof formTemplate>;
+
+const { register, handleSubmit, control } = useForm<FormValues>({
+  resolver: zodResolver(formTemplate),
+});
 const formTemplate = z
   .object({
     biasDetection: z.record(z.string()),
