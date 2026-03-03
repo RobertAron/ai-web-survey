@@ -59,7 +59,7 @@ export function Form({
     name: "biasDetection.group-bias-detection",
   });
   const showBiasDirection =
-    biasAnswer === "Likely Yes" || biasAnswer === "Definitely Yes";
+    biasAnswer === "Likely Yes" || biasAnswer === "Definitely Yes"|| biasAnswer === "Likely No"|| biasAnswer === "Definitely No";
 
   const onSubmit: Parameters<typeof handleSubmit>[0] = async (d) =>
     fetch("/step-10/api", {
@@ -106,6 +106,7 @@ export function Form({
           register={register}
           sectionKey="biasDirection"
           responses={[
+            "N/A: Not politically biased",
             "Very Liberal",
             "Somewhat Liberal",
             "Somewhat Conservative",
